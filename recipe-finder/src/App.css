@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body{
+  height: 100%;
+  margin: 0;
+  font-family: 'Ubuntu',
+  sans-serif;
+  background: #fff4e3;
+
+}
+
+
+form{
+  display: block;
+  /* background: url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"); */
+  background: #5d5d5a;
+  height: 80vh;
+  top: 0;
+}
+
+h4{
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 40px;
+}
+.search{
+  width: 300px;
+  padding-top: 10em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input{
+  width: 300px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+input:focus{
+  outline: none;
+  color: white;
+}
+
+input::placeholder{
+  font-size: 20px;
+  color: white;
+  opacity: 1;
+  text-align: center;
+}
+
+button{
+  width: 306px;
+  height: 40px;
+  background: transparent;
+  font-size: 30px;
+  border: none;
+
+}
+
+button:hover{
+  color: rgb(122, 122, 122);
+}
+
+button:focus{
+  outline: none;
+  cursor: pointer;
+}
+
+main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.inner{
+  width: 300px;
+  margin: 4em;
+}
+
+h1, p{
+  text-align: center;
+}
+
+p{
+}
+
+img{
+  box-shadow: 5px 5px 10px grey;
+}
+
+a{
+  padding: 8px;
+  text-decoration: none;
+  border: 1px solid grey;
+  color: black;
+}

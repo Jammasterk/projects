@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+    <title>Document</title>
+</head>
+<body style="background:rgb(54, 83, 88)">
+    <main class="calculator form-group col align-self-center w-100">
+        <h1 class="text-center" style="border-bottom:1px solid black">Group tip calculator</h1>
+        <br>
+        <div class="tip-screen">
+            <form action="" class="bg-dark text-white p-2 col mx-auto rounded-3">
+            <p class="text-center">Bill Amount</p>
+            <input 
+                type="text"
+                id="bill-amount"
+                placeholder="Enter bill amount"
+                class="row justify-content-center mx-auto"
+            >
+            <p class="text-center">Rate Service</p>
+            <select name="" id="quality" class="form-control row justify-content-center mx-auto w-50">
+                <option value="">--Select Rating--</option>
+                <option value=".3">★★★★★ 30%</option>
+                <option value=".25">★★★★ 25%</option>
+                <option value=".15">★★★ 15%</option>
+                <option value=".1">★★ 10%</option>
+                <option value=".05">★ 5%</option>
+            </select>
+            <p class="text-center">Split between how many people?</p>
+            <input 
+                type="text"
+                id="split"
+                placeholder="How many people?"
+                class="row justify-content-center mx-auto"
+            >
+            <br>
+            <div class="col-md-4 mx-auto text-center">
+            <button 
+                type="submit" 
+                id="calculate"
+                class="btn btn-outline-info mt-2 mb-2 row w-50 row justify-content-center mx-auto">Calculate
+        </button>
+        </div>
+        </div>
+    
+        <div style="text-align: center; font-size: 1.6em; color: white" class=" bg-dark pb-3" id="totalTip">
+            <sup>$</sup>
+            <span id="tip">0.00</span>
+            <small id="each"> each</small>
+        </div>
+    </form>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -19,11 +19,3 @@ const RecipeMap = ({ title, image, ingredientLines, prep, mealType, url}) => {
 
 export default RecipeMap
 
-
-      {/* <p>{mealType}</p>
-      <p>{prep}</p>
-      <ol>
-        {ingredientLines.map((ingredient) => (
-          <li>{ingredient}</li>
-        ))}
-      </ol> */}

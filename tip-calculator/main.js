@@ -1,5 +1,5 @@
-function calculateTip(e){
-    e.preventDefault()
+function calculateTip(){
+    // e.preventDefault()
     var billAmount = document.getElementById('bill-amount').value
     var quality = document.getElementById('quality').value
     var split = document.getElementById('split').value

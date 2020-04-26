@@ -11,6 +11,10 @@ const config = {
   measurementId: "G-1LGPDW3QCL",
 };
 
+
 const fire = firebase.initializeApp(config);
+firebase.analytics();
+
+// const fire = firebase.initializeApp(config);
 
 export default fire;

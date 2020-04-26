@@ -1,5 +1,6 @@
 import React from "react";
 import fire from "../config/fire";
+import { TextField, Button } from "@material-ui/core";
 
 class Login extends React.Component {
   login() {
@@ -33,47 +34,37 @@ class Login extends React.Component {
       });
   }
 
-    //   render() {
-    //     return (
-    //       <div>
-    //         <div>
-    //           <div id="email">
-    //             <label>Email</label>
-    //             <input id="email" placeholder="enter email..." type="text" />
-    //           </div>
-    //         </div>
-    //         <div id="password">
-    //           <label>Password</label>
-    //           <input
-    //             id="password"
-    //             placeholder="enter password..."
-    //             type="text"
-    //           />
-    //         </div>
-    //         <button onClick={this.login}>Login</button>
-    //         <button onClick={this.signUp}>Signup</button>
-    //       </div>
-    //     );
-    //   }
-    // }
-
   render() {
     return (
       <div style={{ textAlign: "center" }}>
         <div>
           <div>Email</div>
-          <input id="email" placeholder="Enter Email.." type="text" />
+          {/* <input id="email" placeholder="Enter Email.." type="text" /> */}
+          <TextField
+            required
+            id="email"
+            label="Required"
+            type="text"
+            placeholder="Enter email"
+          />
         </div>
         <div>
           <div>Password</div>
-          <input id="password" placeholder="Enter Password.." type="text" />
+          {/* <input id="password" placeholder="Enter Password.." type="text" /> */}
+          <TextField
+            required
+            id="password"
+            label="Required"
+            type="text"
+            placeholder="Enter email"
+          />
         </div>
-        <button style={{ margin: "10px" }} onClick={this.login}>
+        <Button variant="outlined" color="primary" onClick={this.login}>
           Login
-        </button>
-        <button style={{ margin: "10px" }} onClick={this.signUp}>
-          Sign Up
-        </button>
+        </Button>
+        <Button variant="outlined" color="primary" onClick={this.signUp}>
+          Signup
+        </Button>
       </div>
     );
   }

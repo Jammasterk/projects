@@ -25,6 +25,11 @@ const merchantSchema = new Schema({
     profile:{
         type: String,
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 })
 

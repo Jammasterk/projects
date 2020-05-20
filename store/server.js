@@ -24,6 +24,7 @@ mongoose.connect('mongodb://localhost:27017/user-authentication', {
 
 app.use("/api", expressJwt({ secret: process.env.SECRET }));
 app.use("/auth", require("./routes/authRouter.js"));
+app.use("/api/merchant", require('./routes/merchantRouter.js'))
 
 app.use((err, req, res, next) => {
     console.log(err)

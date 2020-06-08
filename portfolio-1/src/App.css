@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body{
+  font-family: 'Ubuntu',
+  sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0c0c0c;
+  /* width: 100%; */
+}
+
+img{
+  position: relative;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh
+}
+
+h1{
+  margin: 0;
+}
+
+.SplashText{
+  position: absolute;
+  top: 0;
+  text-align: center;
+  color: #fff;
+  padding-top: 6em;
+  z-index: 9;
+  width: 100%;
+  margin-bottom: 12em
+}
+
+h1, p{
+  text-align: center;
+}
+
+
+
+.overlay{
+  position: absolute;
+  background: #000; 
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  opacity: .67;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 90%;
+  z-index: 5;
+  margin-bottom: 4em;
+  padding-right: 0;
+}
+
+button{
+  margin-top: 18em;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 16px;
+  width: 160px;
+}
+
+a{
+  width: 100%;
+}
+
+a:hover{
+  background: rgb(192, 188, 188);
+  color: #000;
+}
+
+.portImg, .Recipe, .Tip, .Bootstrap{
+  width: 40%;
+  height: 43%;
+  /* margin-left: 10em; */
+}
+
+h2{
+  /* text-align: center; */
+  /* margin-left: 6em; */
+  color: #fff;
+  text-decoration: none;
+}
+.flex{
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  /* margin-left: .5em; */
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.port{
+  margin-top: 3em;
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 3em;
+}
+
+.contact{
+  display: flex
+}
+
+.homeBtn{
+  color: #fff;
+}
+
+.contacts{
+  color: #fff;
+  display: flex;
+  /* margin-top: 60em; */
+  /* margin-left: 40em; */
+  justify-content: space-around;
+}
+
+.skills{
+  display: inline-block;
+}
+
+.workBtn{
+  color: #fff;
+}
+
+.projects{
+  color: #fff;
+}
+
+.contacts{
+  color: #fff;
+}

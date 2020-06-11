@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+img{
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+p{
+    color: #fff;
+    /* font-family: 'Source Sans Pro',
+    sans-serif; */
+}
+
+.overlay{
+    background: grey;
+    opacity: .8;
+    color: black;
+    width: 50%;
+    font-family: 'Quicksand',
+    sans-serif;
+    height: 8em;
+    position: absolute;
+    margin: 0 25%;
+    display: table;
+}

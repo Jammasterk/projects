@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Ubuntu&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+img {
+    width: 100%;
+    height: 95vh
+}
+
+.right {
+    height: 95vh;
+    width: 100%;
+    background-color: #E7E7E9;
+}
+
+h1 {
+    font-family: 'Lato',
+        sans-serif;
+}
+
+p {
+    font-family: ubuntu;
+}
+
+.nav {
+    background-color: #1E1D1F;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    font-size: 16px;
+    height: 60px;
+    justify-content: space-around;
+    top: 0;
+    opacity: .9;
+}
+
+.nav-link {
+    position: absolute;
+    right: 0;
+    margin-top: 1em
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #f1f1f1;
+    font-family: 'Lato',
+        sans-serif;
+    /* padding: 8px; */
+    padding: 16px 80px;
+    margin-top: 6em;
+}
+
+.left {
+    height: 95vh;
+    width: 100vw;
+    background-color: purple;
+    position: relative;
+}
+
+.name {
+    font-family: 'Lato',
+        sans-serif;
+    font-weight: 800;
+    font-size: 4em;
+    /* color: transparent; */
+    /* text-shadow: 2px 2px lightgray; */
+}
+
+.bottom {
+    height: 5vh;
+    width: 100vw;
+    background-color: #1E1D1F;
+}
+
+.footer {
+    text-align: center;
+    color: #fff;
+}
+
+.splash-text {
+    margin-top: 10%;
+    margin-left: 45em;
+    position: absolute;
+    top: 0;
+}
+
+.subtitle {
+    margin-bottom: 3em;
+}
+
+.submit-btn {
+    /* width: 24em; */
+    /* height: 4em; */
+    margin-top: 8em;
+    padding: .25em 3em;
+    background: #3e3636;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    font-family: ubuntu
+}
+
+.particle {
+    background: rgb(92, 90, 90)
+}
+
+.splash {
+    position: relative;
+}
+
+li {
+    color: darkolivegreen;
+}
+

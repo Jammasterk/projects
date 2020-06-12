@@ -1,16 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=B612&family=Montserrat&display=swap');
+
+/* font-family: 'B612', sans-serif;
+font-family: 'Montserrat',sans-serif; */
 
 *{
   margin: 0;
   padding: 0;
 }
 
+.inner-container{
+  width: 100%;
+  position: absolute;
+  background: rgb(255, 148, 3);
+  background: linear-gradient(180deg, rgba(255, 148, 3, .02) 0%, rgba(10, 56, 65, .7) 100%);
+  
+}
+
 .container{
   display: grid;
+  position: relative;
+  z-index: -1;
   /* grid-template-columns: repeat(4, auto); */
   grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
   grid-template-rows: 33.333% 33.333% 33.333%;
-  height: 800px
+  height: 800px;
+}
+
+.header{
+  font-family: 'B612',
+  sans-serif;
+  font-size: 50px;
+  margin: 1em 1em 0 0;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.sub-header{
+  margin-left: 1.2em;
+  font-size: 30px;
 }
 
 .sectionOne{
@@ -47,6 +74,10 @@
   grid-column: 2/3;
 }
 
+.sectionFive:hover{
+  background: #5d5d5a
+}
+
 .sectionSix{
   background: url('https://images.pexels.com/photos/4312843/pexels-photo-4312843.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-size: cover;
@@ -57,6 +88,11 @@
   background: url('https://images.pexels.com/photos/4348270/pexels-photo-4348270.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-size: cover;
   grid-column: 3/4;
+  /* position: absolute; */
+}
+
+.sectionSeven:hover{
+  background: #40514e;
 }
 
 .sectionEight{
@@ -70,14 +106,15 @@
   grid-column: 4/5;
 }
 
-.sectionTen{
-  background: #f8f8f8;
-}
-
-.sectionEleven{
-  background: #34222e;
-}
-
-.sectionTwelve{
-  background: #857671
+.links{
+  text-decoration: none;
+  padding: .8em 3em;
+  border: 1px solid white;
+  color: #fff;
+  margin: auto;
+  width: 400px;
+  z-index: 3;
+  font-family: 'Montserrat',
+  sans-serif;
+  /* position: absolute; */
 }

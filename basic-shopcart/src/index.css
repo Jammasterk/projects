@@ -12,20 +12,7 @@ code {
     monospace;
 }
 
-img {
+img{
   width: 200px
 }
 
-.item{
-  display: inline-block;
-}
-
-.container{
-  display: grid;
-  width: 300px;
-  grid-template-columns: 300px;
-}
-
-.itemPreview{
-  display: block;
-}

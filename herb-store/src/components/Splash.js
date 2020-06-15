@@ -17,7 +17,7 @@ export class Splash extends Component {
             <div className="sectionThree"></div>
             <div className="sectionFour"></div>
             <div className="sectionFive">
-              <Link className="links" to="/">
+              <Link className="links" to="/Packages">
                 Packages
               </Link>
               <Switch>
@@ -29,11 +29,11 @@ export class Splash extends Component {
             <div className="sectionSix"></div>
             <div className="sectionSeven">
               <Link className="links" to="/Contact">
-                Contact Me
+               <Contact />
+                
               </Link>
               <Switch>
-                <Route path="/Contact">
-                  <Contact />
+                <Route path="/Contact" component={Contact}>
                 </Route>
               </Switch>
             </div>

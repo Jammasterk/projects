@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto',
+    sans-serif;
+    background: #857671;
+    height: 100%;
+}
+
+nav{
+    width: 100%;
+    background: #1a2639;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 20px auto 0 auto;
+    position: relative;
+    width: 90%;
+    color: #fff;
+}
+
+.brand{
+    grid-row: 0/2;
+     position: absolute;
+     top: 0;
+     margin-left: 2em;
+}
+
+.links{
+   display: flex;
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 30%;
+   justify-content: space-around;
+   margin-top: 19.92px;
+   list-style: none;
+}
+
+.splash{
+    display: flex;
+    margin: 50px auto 0 auto;
+    width: 90%;
+}
+
+.splash > img{
+    width: 50%;
+}
+
+.left-img{
+    border-radius: 20px 0 0 20px
+}
+
+.right-img{
+    border-radius: 0 20px 20px 0;
+}
+
+th{
+    /* width: 100%; */
+}
+
+main{
+    display: grid;
+    width: 90%;
+    height: 120%;
+    padding-bottom: 40px;
+    grid-template-columns: repeat(4, 22.5%);
+    grid-template-rows: 200px 200px 200px 200px;
+    margin: 50px auto 0 auto;
+    background: #1a2639;
+    /* margin-left: 75px; */
+    border-radius: 20px;
+}
+
+.top-left{
+    background-color: aquamarine;
+    grid-column: 1/4;
+    /* width: 60%; */
+    color: #fff;
+    background: #1a2639;
+    border-radius: 25px 0 0 0;
+}
+
+.top-left img{
+    grid-row: 1/2;
+    width: 100%;
+}
+
+table{
+    background-color: #1a2639;
+    grid-column: 4/5;
+    display: inline-block;
+    margin: 70px 0 0 30px;
+}
+
+tr{
+    border: 1px solid #fff;
+    color: #fff
+
+}
+
+.main-middle{
+    background: #1a2639;
+    grid-column: 4/5;
+    grid-row: 2/5;
+    color: #fff;
+}
+
+.stuff{
+    margin-left: 35px;
+}
+
+.text{
+    background:#1a2639;
+    grid-row: 4/5;
+    margin: 0;
+    height: 80px;
+    margin-left: 32px;
+    width: 80%;
+    margin-top: 25px;
+}
+
+button{
+    font-size: 26px;
+    padding: 8px 24px;
+    border-radius: 5px;
+    margin-left: 32px;
+    border: 1px solid white;
+    background: none;
+    color: #fff;
+}
+
+button:focus{
+    outline: none;
+}
+
+button:hover{
+    background: #fff;
+    opacity: 9;
+    color: #1a2639;
+}
+
+h2{
+    margin-left: 20px;
+    border-radius: 15px;
+    color: #fff;
+    padding: 20px 0;
+}
+
+footer > h2{
+    text-align: center;
+    width: 90%;
+    background: #1a2639;
+    margin: auto;
+}
+
+footer{
+    margin-top: 20px;
+    height: 60px;
+}

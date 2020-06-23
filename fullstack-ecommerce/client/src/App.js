@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import "./styles.css"
 import axios from "axios"
 import Product from "./components/Product"
 import AddProductForm from "./components/AddProductForm"
@@ -23,8 +24,17 @@ function addProduct(newProduct){
 
 function deleteProduct(productId){
     axios.delete(`/products/${productId}`)
-    .then(res => console.log(res))
+    .then(res => {
+        setProducts(prevProducts => prevProducts.filter(product => product._id !== productId))
+    })
     .catch(err => console.log(err))
+}
+
+function updateProduct(productId){
+    axios.put(`/products/${productId}`)
+    .then(res => {
+        
+    })
 }
 
     useEffect(() => {

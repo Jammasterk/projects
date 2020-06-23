@@ -17,7 +17,8 @@ function AddProductForm(props) {
     }
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="m-auto"onSubmit={handleSubmit}>
+          <h1>Product Add Page</h1>
         <input
 className="form-control w-50 mb-2"
           type="text"
@@ -26,7 +27,7 @@ className="form-control w-50 mb-2"
           onChange={handleChange}
           placeholder="name"
         />
-        <input
+        <textarea
 className="form-control w-50 mb-2"
           type="text"
           name="description"

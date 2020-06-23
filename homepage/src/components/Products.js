@@ -15,11 +15,12 @@ export class Products extends Component {
             </div>
             <div className="cards">
               <div className="innerCard">
-                <img className="png"
+                <img
+                  className="png"
                   src="https://img.icons8.com/bubbles/2x/test-tube.png"
                   alt=""
                 />
-                <br/>
+                <br />
                 <ul>
                   <li>Biology</li>
                   <li>Chemistry</li>
@@ -28,21 +29,25 @@ export class Products extends Component {
                 </ul>
               </div>
               <div className="innerCard">
-                <img className="png"
+                <img
+                  className="png"
                   src="https://i.ya-webdesign.com/images/building-construction-png-4.png"
                   alt=""
                 />
-                <br/>
+                <br />
                 <ul>
                   <li>Structural Engineering</li>
                   <li>Construction Engineering</li>
                   <li>Chemical Engineering</li>
-                  
                 </ul>
               </div>
               <div className="innerCard">
-                <img className="png" src="http://www.clker.com/cliparts/3/e/6/e/11949967931713723703kig.svg.med.png"  alt=""/>
-                <br/>
+                <img
+                  className="png"
+                  src="http://www.clker.com/cliparts/3/e/6/e/11949967931713723703kig.svg.med.png"
+                  alt=""
+                />
+                <br />
                 <ul>
                   <li>Algebra</li>
                   <li>Calculus</li>
@@ -51,10 +56,12 @@ export class Products extends Component {
                 </ul>
               </div>
               <div className="innerCard">
-                <img 
-                className="png one"
-                src="http://www.clker.com/cliparts/9/c/7/7/11949866351514025671sixteenth_notes_joined__01.svg.med.png" alt="" />
-                <br/>
+                <img
+                  className="png one"
+                  src="https://www.netclipart.com/pp/m/90-901535_community-houses-clipart-png.png"
+                  alt=""
+                />
+                <br />
                 <ul>
                   <li>Piano Lessons</li>
                   <li>Voice Lessons</li>
@@ -69,3 +76,5 @@ export class Products extends Component {
 }
 
 export default Products
+
+// http://www.clker.com/cliparts/9/c/7/7/11949866351514025671sixteenth_notes_joined__01.svg.med.png

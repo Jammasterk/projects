@@ -57,7 +57,7 @@ productRouter.delete("/:productId", (req, res, next) => {
         res.status(500)
         return next(err)
         }
-        return res.status(201).send(`Successfully deleted ${deletedProduct.name}`)
+        return res.status(201).send(`Successfully deleted ${deletedProduct}`)
     })
 })
 

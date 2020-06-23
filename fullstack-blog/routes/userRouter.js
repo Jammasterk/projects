@@ -27,6 +27,7 @@ userRouter.get("/:usersId", (req, res, next) => {
     res.send(foundUser)
 })
 
+
 // Get by age
 userRouter.get('/search/age', (req, res, next)=> {
     User.find({age: req.query.age}, (err, users)=>{

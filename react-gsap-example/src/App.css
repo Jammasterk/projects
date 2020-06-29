@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+  visibility: hidden;
+}
+
+.circle-container{
+  overflow: hidden;
+}
+
+.circle{
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  background: #fdcf51;
+  margin: 50px auto;
+}
+
+.red{
+  background: #fd5151;
+}
+
+.blue{
+  background: rgb(79, 16, 228);
+}

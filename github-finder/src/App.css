@@ -50,24 +50,28 @@ input{
     font-size: 30px;
 }
 
-.btn-dark{
+.btn_dark{
     background: #482ff7;
     height: 50px;
-    width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 30px auto;
     border: none;
     border-radius: 5px;
     color: #fff;
     font-size: 35px
 }
 
-.btn{
+.btn-input{
    background: #6e3b3b;
    height: 50px;
-   width: 800px;
-   margin: 25px auto;
+   width: 100%;
+   margin: 0 auto;
    border: none;
    border-radius: 5px;
    color: #fff;
    font-size: 35px
+}
+
+.btn-input:focus{
+    outline: none;
 }

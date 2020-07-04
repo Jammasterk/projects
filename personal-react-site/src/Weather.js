@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import Form from "./Form"
 
-const API_key = "ae36266d31e87bb60dd9265c9f72c9b7";
+// const API_key = "ae36266d31e87bb60dd9265c9f72c9b7";
 
 class Weather extends Component {
   state = {
@@ -19,19 +19,19 @@ class Weather extends Component {
     const country = e.target.elements.country.value;
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_key}&units=imperial`
+        `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${process.env.REACT_APP_WEATHER_CLIENT}&units=imperial`
       )
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         this.setState({
           temp: response.data.main.temp,
           city: response.data.name,
           country: response.data.sys.country,
           description: response.data.weather[0].description,
-          icon: response.data.weather[0].icon
+          icon: response.data.weather[0].icon,
         });
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
 

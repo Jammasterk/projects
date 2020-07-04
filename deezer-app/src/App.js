@@ -3,8 +3,6 @@ import axios from 'axios'
 import Track from "./components/Track"
 import Search from "./components/Search"
 
-// const API_KEY = 'cfd5e5fd633377764d5c14725fc02a73'
-
 export default class App extends React.Component{
 
 
@@ -18,7 +16,8 @@ export default class App extends React.Component{
         this.setState({result: true})
         console.log(track)
         const res = await axios.get(
-          `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${track}&appId=${process.env.REACT_APP_DEEZER_CLIENT}`
+          `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?
+          q=${track}&appId=${process.env.REACT_APP_DEEZER_CLIENT}`
         );
         this.setState({results: res.data.items, loading: false});
     }

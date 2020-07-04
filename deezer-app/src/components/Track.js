@@ -11,7 +11,7 @@ const Track = ({results, loading}) => {
             <div>
                 {results.map(result => (
                     <TrackItems key={result.id} result={result}/>
-                ))}
+                ))} 
                 {/* <TrackItems /> */}
             </div>
         )

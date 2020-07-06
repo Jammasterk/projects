@@ -1,0 +1,35 @@
+.input{
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-bottom: 1px solid #cc5500;
+    font-size: 20px
+}
+
+.input:focus{
+    outline: none;
+}
+
+.button{
+    height: 35px;
+    border-right: 1px solid #cc5500;
+    border-top: 1px solid #cc5500;
+    border-bottom: 1px solid #cc5500;
+    width: 100px;
+    background: #cc5500;
+    font-size: 16px;
+    outline: none;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+    color: white
+}
+
+form{
+    margin: 0 auto;
+    display: inline-block;
+    width: 100%
+}
+
+.container{
+    width: 100%
+}

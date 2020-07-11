@@ -69,6 +69,7 @@ body{
 }
 
 button{
+    margin-top:  3.2em !important;
     border-radius: 5px;
     border: none;
     color: #fff;
@@ -189,7 +190,7 @@ form{
 
 .carousel-images{
     width: 80% !important;
-    height: 70%;
+    height: 100% !important;
 }
 
 .BrainhubCarousel__dot{
@@ -198,5 +199,99 @@ form{
 
 h1{
     font-weight: 200;
+}
+
+.footer{
+    background: var(--blue-background);
+    color: #fff;
+    justify-content: space-around;
+    display: flex;
+}
+
+footer{
+    background: var(--blue-background);
+}
+
+footer, ul{
+    padding: 30px 0;
+    line-height: 30px;
+    list-style: none;
+}
+
+@media only screen and (max-width: 820px) {
+
+    .left{
+        top: 0;
+        position: absolute;
+    }
+    .text{
+        position: absolute;
+        display: block;
+        color: #fff;
+    }
+    
+    .top-text{
+left: 0;
+text-align: start;
+    }
+    
+    h4{
+        width: 80%
+    }
+
+    .splash-page{
+        display: block;
+    }
+
+    .specialties{
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 150px);
+        /* display: inline-block; */
+        /* width: 1fr; */
+        margin: auto;
+        flex-direction: column;
+        justify-content: center
+    }
+
+
+    .people{
+        /* display: block; */
+        grid-gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
+        display: inline-block;
+        margin: auto;
+        /* position: absolute; */
+        /* width: 100%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around
+    }
+    .name, .sub-text{
+        display: inline-block;
+    }
+    
+    .team-members{
+        /* width: 18.75em; */
+        display: flex;
+        flex-direction: row;
+    }
+
+    p, .name{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-container{
+     display: flex;
+     flex-direction: column;
+     width: 18.75em;
+     margin: 1em auto;
+    }
+    .footer{
+        display: block;
+        text-align: center;
+    }
 }
 

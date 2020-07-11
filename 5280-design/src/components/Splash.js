@@ -14,7 +14,7 @@ export function Splash() {
         <div className="splash-page">
           <div className="left"></div>
           <div className="text">
-            <p>We are your local</p>
+            <p className="top-text">We are your local</p>
 
             <h1>
               interior <br /> designers.
@@ -51,9 +51,9 @@ export function Splash() {
                 style={{
                   marginTop: "6px",
                   marginRight: "10px",
-                  height: '36px',
+                  height: "36px",
                   padding: "10px 10px",
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
                 type="submit"
               >
@@ -108,19 +108,27 @@ export function Splash() {
           </div>
         </div>
         <div className="carousel">
-                <DemoCarousel/>
+          <DemoCarousel />
         </div>
         <footer>
-          <ul>
-            <li>520 Bannock St. 80204</li>
-            <li>Denver Colorado</li>
-            <li>303-505-5555</li>
-          </ul>
-          <ul>
-            <li>100 S. Monarch St. 81661</li>
-            <li>Aspen Colorado</li>
-            <li>970-505-4444</li>
-          </ul>
+          <h1 style={{ textAlign: "center", margin: "26px 0", color: "#fff" }}>Contact Us</h1>
+          <div className="footer">
+            <ul>
+              <li>520 Bannock St. 80204</li>
+              <li>Denver Colorado</li>
+              <li>303-505-5555</li>
+            </ul>
+            <ul>
+              <li>100 S. Monarch St. 81661</li>
+              <li>Aspen Colorado</li>
+              <li>970-505-4444</li>
+            </ul>
+            <ul>
+              <li>655 Breckenridge Rd. 80424</li>
+              <li>Breckenridge Colorado</li>
+              <li>970-505-4444</li>
+            </ul>
+          </div>
         </footer>
       </div>
     );

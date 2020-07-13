@@ -1,0 +1,13 @@
+{
+  "name": "easybank-landing-page-master",
+  "version": "1.0.0",
+  "description": "![Design preview for the Easybank landing page coding challenge](./design/desktop-preview.jpg)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run build && mv build/index.html build/200.html && surge build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

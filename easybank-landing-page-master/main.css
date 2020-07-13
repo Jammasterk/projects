@@ -43,7 +43,7 @@ li, a {
 
 .title{
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .content{
@@ -237,7 +237,8 @@ img, .social-icons{
     }
 
     .choose{
-        margin-left: 1em;
+        padding-left: 1em;
+        /* width:100vw */
     }
 
     .choosey{
@@ -245,7 +246,7 @@ img, .social-icons{
     }
 
     .title{
-        width: 50em;
+        /* width: 50em; */
         /* font-size: 1.5rem; */
         font-size: 50%;
         position: absolute;
@@ -284,8 +285,6 @@ img, .social-icons{
         width: 12em;
         top: 0;
     }
-
-    
 
     .choose, .descriptions{
     text-align :start;

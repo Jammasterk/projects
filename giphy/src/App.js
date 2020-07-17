@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from "axios"
 import Gif from "./Gif"
 import Search from "./Search"
+require('dotenv').config()
+
 
 // const API_KEY = "S0lbBue5lKol2vsT27zaR9NDWXOFmT2Y";
 
@@ -25,7 +27,7 @@ export class App extends Component{
         this.setState({gifs: res.data.items, loading: false})
     }
 
-        clearUsers = () => this.setState({gifs: [], loading: false})
+        clearGifs = () => this.setState({gifs: [], loading: false})
 
         setAlert = (msg, type) => {
             this.setState({alert: {msg, type}})
@@ -37,7 +39,7 @@ export class App extends Component{
                 <Search 
                     searchGifs={this.searchGifs}
                     clearGifs={this.clearGifs}
-                    showClear={this.showClear}
+                    /* showClear={this.showClear} */
                     setAlert={this.setAlert}
                 />
                 <Gif loading={this.state.loading} gifs={this.state.gifs}/>

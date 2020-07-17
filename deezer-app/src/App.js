@@ -1,48 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-import Track from "./components/Track"
-import Search from "./components/Search"
+import Track from "./Track"
+import Search from "./Search"
+const API_KEY ='570a4a103a9fa511b252c7fac1bbc995'
 
-export default class App extends React.Component{
-
+export class App extends Component {
 
     state = {
-        results: [],
+        tracks: [],
         loading: false,
         alert: null
     }
 
-    searchTrack = async track => {
-        this.setState({result: true})
-        console.log(track)
-        const res = await axios.get(
-          `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?
-          q=${track}&appId=${process.env.REACT_APP_DEEZER_CLIENT}`
+    searchTracks = async text => {
+        this.setState({track: true})
+        console.log(text)
+        const res = await axios.get(`https://api.deezer.com/search?q=${text}&apiKey=${API_KEY}`
         );
-        this.setState({results: res.data.items, loading: false});
+        this.setState({tracks: res.data.items, loading: false})
     }
 
-    // Clear tracks from state
+    clearTracks = () => this.setState({tracks: [], loading: false})
 
-    clearResults = () => this.setState({results: [], loading: false})
-
-    // Set an alert
-
-    setAlert= (msg, type) => {
+    setAlert = (msg, type) => {
         this.setState({alert: {msg, type}})
     }
 
-    render(){
-    return (
-        <div>
-            <Search
-            searchTracks={this.searchTrack}
-            clearResults={this.clearResults}
-            showClear={this.state.results > 0 ? true : false}
-            setAlert={this.setAlert}
-            />
-            <Track loading={this.state.loading} results={this.state.results} />
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                <Search 
+                searchTracks={this.searchTracks}
+                showClear={this.state.tracks.length > 0 ? true : false}
+                setAlert={this.setAlert}
+                />
+                <Track loading={this.state.loading} tracks={this.state.tracks}/>
+                
+            </div>
+        )
     }
 }
+
+export default App

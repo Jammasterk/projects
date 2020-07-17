@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 export const UserContext = React.createContext();
 
 const userAxios = axios.create();
@@ -24,8 +23,7 @@ export default function UserProvider(props) {
   const [userState, setUserState] = useState(initState);
 
   function signup(credentials) {
-    axios
-      .post("/auth/signup", credentials)
+    axios.post("/auth/signup", credentials)
       .then(res => {
         const { user, token } = res.data;
         localStorage.setItem("token", token);
@@ -40,8 +38,7 @@ export default function UserProvider(props) {
   }
 
   function login(credentials) {
-    axios
-      .post("/auth/login", credentials)
+    axios.post("/auth/login", credentials)
       .then(res => {
         const { user, token } = res.data;
         localStorage.setItem("token", token);
@@ -81,8 +78,7 @@ export default function UserProvider(props) {
   }
 
   function getUserPosts() {
-    userAxios
-      .get("/api/post/user")
+    userAxios.get("/api/post/user")
       .then(res => {
         setUserState(prevState => ({
           ...prevState,
@@ -93,8 +89,7 @@ export default function UserProvider(props) {
   }
 
   function addPost(newPost) {
-    userAxios
-      .post("/api/post", newPost)
+    userAxios.post("/api/post", newPost)
       .then(res => {
         setUserState(prevState => ({
           ...prevState,
@@ -112,14 +107,12 @@ export default function UserProvider(props) {
           ...prevState,
           posts: prevState.posts.map(post => post._id !== postId ? post : res.data)
         }));   
-
-      })
+     })
       .catch(err => console.log(err));
   }
 
   function deletePost(postId) {
-    userAxios
-      .delete(`/api/post/${postId}`)
+    userAxios.delete(`/api/post/${postId}`)
       .then(res => {
         setUserState(prevState => ({
           ...prevState,

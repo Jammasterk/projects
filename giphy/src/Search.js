@@ -10,7 +10,7 @@ export class Search extends Component {
     static propTypes = {
         searchGifs: PropTypes.func.isRequired,
         clearGifs: PropTypes.func.isRequired,
-        showClear: PropTypes.bool.isRequired,
+        // showClear: PropTypes.bool.isRequired,
         setAlert: PropTypes.func.isRequired,
     }
 

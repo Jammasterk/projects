@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(243, 243, 243)
+}
+
+nav{
+    height: 40px;
+    background: white
+}
+
+.logo{
+    width: 30px;
+    margin-left: 2em;
+    margin-top: .5%;
+}
+
+ul{
+    margin-top: 1%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    list-style: none;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.pro-pic{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    top: 0
+}

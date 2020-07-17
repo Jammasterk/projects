@@ -17,8 +17,8 @@ export class App extends Component{
         this.setState({listing: true})
         console.log(list)
         const res = await axios.get(
-          `https://realtor.p.rapidapi.com/properties/v2/list-for-sale?q=${list}&x-rapidapi-host=
-          ${process.env.REACT_APP_REALTOR_CLIENT_ID}&x-rapidapi-key=${process.env.REACT_APP_REALTOR_CLIENT_SECRET}
+          `https://realtor.p.rapidapi.com/properties/v2/list-for-sale?q=${list}&rapidapi-host=
+          ${process.env.REACT_APP_REALTOR_CLIENT_ID}&rapidapi-key=${process.env.REACT_APP_REALTOR_CLIENT_SECRET}
           `
         );
         this.setState({listings: res.data.items, loading: false})

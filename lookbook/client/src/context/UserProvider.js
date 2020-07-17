@@ -48,7 +48,6 @@ export default function UserProvider(props){
                 user,
                 token
             }))
-
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
@@ -63,4 +62,84 @@ export default function UserProvider(props){
         })
     }
 
+    function handleAuthErr(errMsg){
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg: ''
+        }))
+    }
+
+    function resetAuthErr(){
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg: ''
+        }))
+    }
+
+    function getUserLooks(){
+        userAxios.get('/api/look/user')
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                looks: res.data
+            }))
+        })
+        .catch(err => console.log(err.res.data.errMsg))
+    }
+
+    function addLook(newLook){
+        userAxios.post('/api/look', newLook)
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                looks: [...prevState.looks, res.data]
+            }))
+        })
+        .catch(err => console.log(err.res.data.errMsg))
+    }
+
+    function updateLook(updates, lookId){
+        userAxios.put(`/api/look/${lookId}`, updates)
+        .then(res => {
+            console.log(res)
+            setUserState(prevState => ({
+                ...prevState,
+                looks: prevState.looks.map(look => look._id !== lookId ? look : res.data)
+            }))
+        })
+        .catch(err => console.log(err))
+    }
+
+    function deleteLook(lookId){
+        userAxios.delete(`/api/look/${lookId}`)
+        .then(res => {
+            setUserState(prevState => ({
+                looks: prevState.looks.filter(look => look._id !== lookId)
+            }))
+
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getUserLooks()
+    }, [])
+
+    return(
+        <UserContext.Provider
+            value={{
+                ...userState,
+                setUserState,
+                signup,
+                login,
+                logout,
+                addLook,
+                updateLook,
+                deleteLook,
+                resetAuthErr
+            }}
+            >
+            {props.children}
+        </UserContext.Provider>
+    )
 }

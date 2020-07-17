@@ -12,35 +12,33 @@ import styled from "styled-components"
 import { Switch, Route, Link } from "react-router-dom";
 
 const Nav = styled.nav`
-    width: 100vw;
-    height: 65px;
-    border-bottom: 2px solid #f1f1f1;
-    padding: 0;
-    display:inline-block;
+  width: 100vw;
+  height: 65px;
+  border-bottom: 2px solid #f1f1f1;
+  padding: 0;
+  display: inline-block;
+  position: absolute;
+  /* display: none; */
+  /* z-index: 3; */
 
-    .ul{
-        display: inline-block;
-        flex-flow: row nowrap;
-        flex-direction: row;
-        position: absolute;
-        right: 0;
-        text-decoration: none;
-    }
-    a{
-        padding: 18px 10px;
-        display: flex;
-        text-decoration: none;
-        color: #f1f1f1
-    }
-
-    .ul{
-        /* background: #000; */
-        width: 100%;
-        font-family: 'Montserrat', sans-serif;
-        position: absolute;
-        right: 0
-    }
-
+  .ul {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    background: rgba(54, 79, 107, .7);
+    z-index: 5;
+    height: 100vh
+  }
+  a {
+    padding: 18px 10px;
+    display: flex;
+    text-decoration: none;
+    color: #f1f1f1;
+    z-index: 5
+  }
 `;
 
 const NavBar = () => {
@@ -48,11 +46,11 @@ const NavBar = () => {
       <div className="nav">
         <Nav>
           <div className="ul">
-            <Link className="li" exact to="/homepage">
+            <Link className="li" to="/homepage">
               Home
             </Link>
-            <Link className="li" to="/program">
-              Program
+            <Link className="li" to="/exhibit">
+              Exhibits
             </Link>
             <Link className="li" to="/about">
               About
@@ -78,7 +76,7 @@ const NavBar = () => {
           <Route exact path="/homepage">
             <HomePage />
           </Route>
-          <Route path="/program">
+          <Route path="/exhibit">
             <Program />
           </Route>
           <Route path="/about">

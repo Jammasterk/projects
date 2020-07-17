@@ -57,11 +57,12 @@ export default function PostForm(props){
           <input
             align="middle"
             className="image"
-            type="text"
+            type="file"
             name="imgUrl"
             value={imgUrl}
             onChange={handleChange}
-            placeholder="Image Upload"
+            /* placeholder="Image Upload" */
+            multiple
           />
           <button className="addPost">{props.btnTxt}</button>
   

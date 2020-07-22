@@ -1,0 +1,28 @@
+#city-value{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #40514e;
+    background: transparent;
+}
+
+#brew-submit{
+    height: 35px;
+    width: 80px;
+    background: #40514e;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px  5px 0;
+}
+
+#city-value:focus{
+    outline: none;
+    background: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}

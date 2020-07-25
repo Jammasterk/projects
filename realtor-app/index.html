@@ -20,8 +20,9 @@
     <title>🏡 Realtor App</title>
 </head>
 <body>
-    <form action="" class="search-container m-auto">
-        <h1>Real</h1>
+    <div class="splash-page">
+    <div action="" class="splash-page">
+            
         <div class="location">
         <input type="text" id="city" placeholder="City" class="region">
         <select name="" id="state" class="region">
@@ -45,7 +46,8 @@
             <option value="KS">Kansas</option>
             <option value="KY">Kentucky</option>
             <option value="LA">Louisiana</option>
-            <option value="MA">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MD">Maryland</option>
             <option value="ME">Maine</option>
             <option value="MI">Michigan</option>
             <option value="MN">Minnesota</option>
@@ -77,24 +79,30 @@
             <option value="WV">West Virginia</option>
             <option value="WY">Wyoming</option>
         </select>
-        <input type="text" id="postal-code" placeholder="Zip Code" class="region">
-        <input type="text" id="line" placeholder="Address" class="region">
         </div>
-        <button class="outline btn btn-outline-success mt-2 w-100" type="button" data-toggle="collapse" data-target="#collapseExample"
+        <div class="misc-buttons">
+        <button type="submit" id="search" class="search-button m-auto" value="Reset">Search</button>
+        <div class="lower">
+        <div class="more"></div>
+        <button class="search-button m-auto" type="button" data-toggle="collapse" data-target="#collapseExample"
         aria-expanded="false" aria-controls="collapseExample">
         More Options <i class="fas fa-caret-down"></i>
         </button>
+        </div>
         <br>
         <div class="options content">
-           <div class="collapse" id="collapseExample">
-        <select name="" id="prop-type" class="selections w-100">
+            <br>
+            <div class="collapse col" id="collapseExample">
+                <input type="text" id="postal-code" placeholder="Zip Code" class="region">
+                <input type="text" id="line" placeholder="Address" class="region">
+        <select name="" id="prop-type" class="selections w-100 region">
             <option value="">Type</option>
             <option value="single_family">Single Family</option>
             <option value="multi_family">Multi Family</option>
             <option value="condo">Condo</option>
             <option value="land">Lot</option>
         </select>
-        <select name="" id="beds" class="selections w-100">
+        <select name="" id="beds" class="selections w-100 region">
             <option value="">Beds</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -102,7 +110,7 @@
             <option value="4">4</option>
             <option value="">Any</option>
         </select>
-        <select name="" id="baths" class="selections w-100">
+        <select name="" id="baths" class="selections w-100 region">
             <option value="">Baths</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -110,13 +118,12 @@
             <option value="4">4</option>
             <option value="">Any</option>
         </select>
-        <input type="text" id="price-min" placeholder="Min price" class="selections w-100">
-        <input type="text" id="price-max" placeholder="Max price" class="selections w-100">
+        <input type="text" id="price-min" placeholder="Min price"  class="selections region">
+        <input type="text" id="price-max" placeholder="Max price"  class="selections region">
+        
         </div>
         </div>
-        <button type="submit" id="search" class="btn btn-outline-primary w-100 mt-2" value="Reset">Search</button>
-    </form>
-    <div id="container">   
+    <div id="container" class="results">   
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
     <script src="main.js"></script>

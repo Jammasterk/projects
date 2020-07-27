@@ -12,7 +12,8 @@ import styled from "styled-components"
         font-family: "Heebo", sans-serif;
         width: 100%;
         top: 20em;
-        background: #efecec;
+        background: #f1f3f4;
+        padding: 24px 0
       }
 
       .title-container {
@@ -37,8 +38,8 @@ import styled from "styled-components"
         margin-bottom: 12px;
       }
 
-      .rank{
-          color: #000
+      .rank {
+        color: #000;
       }
 
       .album {
@@ -69,7 +70,7 @@ import styled from "styled-components"
         }
 
         img {
-          width: 24em;
+          width: 23.5em;
           height: 24em !important;
         }
       }

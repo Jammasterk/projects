@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import SearchMap from "./SearchMap"
-import {TextField, Button, Tooltip} from "@material-ui/core"
+import {TextField, Button} from "@material-ui/core"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
     padding-top: 12em;
     margin: auto;
     font-family: "Heebo", sans-serif;
+    /* background: none */
   }
 
   h1,
@@ -39,9 +40,6 @@ const Wrapper = styled.div`
 
 const Search = () => {
 
-const API_KEY = "cfd5e5fd633377764d5c14725fc02a73";
-
-
 const [results, setResults] = useState([])
 const [search, setSearch] = useState('')
 const [query, setQuery] = useState({})
@@ -56,8 +54,8 @@ const getTrack = async () => {
       {
         method: "GET",
         headers: {
-          app_id: API_KEY,
-          limit: 50
+          app_id: process.env.REACT_APP_DEEZER_KEY,
+          limit: 50,
         },
       }
     );

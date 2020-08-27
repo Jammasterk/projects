@@ -1,30 +1,31 @@
-import React from "react"
-// import AuthForm from "./components/AuthForm"
+import React, {useContext} from "react"
+import {Switch, Route, Redirect} from "react-router-dom"
 import Auth from "./components/Auth"
 import Profile from "./components/Profile"
-import Public from "./components/Public"
-import Account from "./components/Account"
-import {Switch, Route} from "react-router-dom"
+import ProtectedRoute from "./components/ProtectedRoute"
+import {UserContext} from "./context/UserProvider"
+import Navbar from "./components/Navbar"
 
-function App() {
-    return (
-        <div>
-            <Switch>
-                <Route exact path="/">
-                    <Public/>
-                </Route>
-                <Route path="/profile">
-                    <Profile/>
-                </Route>
-                <Route path="/account">
-                    <Account />
-                </Route>
-                <Route path="/protected">
-                    <Auth />
-                </Route>
-            </Switch>
-        </div>
-    )
+const App = () => {
+  const {token, logout} = useContext(UserContext)
+  return (
+    <div>
+      {token && <Navbar logout={logout} />}
+      <Switch>
+        <Route exact 
+               path="/"
+               render={() => (token ? <Redirect to="/profile"/> : <Auth />) }
+        />
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          redirectTo="/"
+          token={token}
+         />
+
+      </Switch>
+    </div>
+  );
 }
 
 export default App

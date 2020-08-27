@@ -1,77 +1,66 @@
-import React, { useState, useContext } from "react";
-import FormPage from "./FormPage.js";
-import { UserContext } from "../context/UserProvider.js";
-import styled from "styled-components"
+import React, {useState, useContext} from "react"
+import AuthForm from "./AuthForm"
+import {UserContext} from "../context/UserProvider"
 
-const initInputs = { username: "", password: "" };
+const initInputs = {username: "", password: ""}
 
-    const Wrapper = styled.div`
-        h4{
-            text-align: center
-        }
-    `
-export default function Auth() {
+export default function Auth(){
+    const [inputs, setInputs] = useState(initInputs)
+    const [toggle, setToggle] = useState(false)
 
+    const {signup, login, errMsg, resetAuthErr} = useContext(UserContext)
 
-  const [inputs, setInputs] = useState(initInputs);
-  const [toggle, setToggle] = useState(false);
+    function handleChange(e){
+        const {name, value} = e.target
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name]: value
+        }))
+    }
 
-  const { signup, login, errMsg, resetAuthErr } = useContext(UserContext);
+    function handleSignup(e){
+        e.preventDefault()
+        signup(inputs)
+    }
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: value,
-    }));
-  }
+    function handleLogin(e){
+        e.preventDefault()
+        login(inputs)
+    }
 
-  function handleSignup(e) {
-    e.preventDefault();
-    signup(inputs);
-  }
+    function toggleForm(){
+        setToggle(prev => !prev)
+        resetAuthErr()
+    }
 
-  function handleLogin(e) {
-    e.preventDefault();
-    login(inputs);
-  }
-
-  function toggleForm() {
-    setToggle((prev) => !prev);
-    resetAuthErr();
-  }
-
-  return (
-    <div className="loginScreen">
-      <Wrapper>
+    return (
+      <div>
+        <h1 style={{width: "60%", textAlign: "center"}}>Medium Lite</h1>
         {!toggle ? (
-          <>
-            <FormPage
-              handleChange={handleChange}
-              handleSubmit={handleLogin}
-              inputs={inputs}
-              btnText="Login"
-              errMsg={errMsg}
-            />
-            <h4 className="check" onClick={toggleForm}>
-              Not a member?
-            </h4>
-          </>
+        <>
+          <AuthForm
+            handleChange={handleChange}
+            handleSubmit={handleLogin}
+            inputs={inputs}
+            btnText="Login"
+            errMsg={errMsg}
+          />
+          <h4 onClick={toggleForm}>Not a member?</h4>
+        </>
         ) : (
-          <>
-            <FormPage
-              handleChange={handleChange}
-              handleSubmit={handleSignup}
-              inputs={inputs}
-              btnText="Sign up"
-              errMsg={errMsg}
-            />
-            <h4 className="check" onClick={toggleForm}>
-              Already a member?
-            </h4>
-          </>
+        <>
+          <AuthForm
+            handleChange={handleChange}
+            handleSubmit={handleSignup}
+            inputs={inputs}
+            btnText="Sign up"
+            errMsg={errMsg}
+          />
+          <h4 onClick={toggleForm}>Already a member?</h4>
+        </>
         )}
-      </Wrapper>
-    </div>
-  );
+      </div>
+    );
 }
+
+

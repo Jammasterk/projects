@@ -1,7 +1,6 @@
 const express = require("express")
 const blogRouter = express.Router()
 const Blog = require("../models/blog")
-const blog = require("../models/blog")
 
 // Get all blogs
 

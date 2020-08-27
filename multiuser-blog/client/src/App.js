@@ -2,6 +2,7 @@ import React, {useContext} from "react"
 import {Switch, Route, Redirect} from "react-router-dom"
 import Auth from "./components/Auth"
 import Profile from "./components/Profile"
+import Public from "./components/Public"
 import ProtectedRoute from "./components/ProtectedRoute"
 import {UserContext} from "./context/UserProvider"
 import Navbar from "./components/Navbar"
@@ -22,7 +23,11 @@ const App = () => {
           redirectTo="/"
           token={token}
          />
-
+         <ProtectedRoute
+          path="/public"
+          component={Public}
+          token={token}
+         />
       </Switch>
     </div>
   );

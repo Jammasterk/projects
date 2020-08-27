@@ -9,28 +9,34 @@ import {
   MDBCollapse,
   MDBContainer,
 } from "mdbreact";
-import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components"
 
 const Wrapper = styled.div`
+  a {
+    color: #fff !important;
+  }
 
-    a{
-      color: #fff !important
-    }
-
-    button{ 
-        background: transparent;
-        border: none
-        }
-.navbar{
-    width: 100vw
-}
-.container{
-  padding: 0;
-  margin: 0;
-  width: 100% !important
-} 
-`
+  button {
+    background: transparent;
+    border: none;
+  }
+  .navbar {
+    width: 100vw;
+  }
+  .container {
+    padding: 0;
+    margin: 0;
+    width: 100% !important;
+  }
+  @media (min-width: 1200px){}
+  .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+    max-width: 100%;
+  }
+`;
 
 class Navbar extends Component {
     state = {
@@ -47,7 +53,6 @@ class Navbar extends Component {
         const {logout} = this.props
         return (
           <Wrapper>
-            <Router>
               <MDBContainer style={{ margin: 0, padding: 0, width: "100vw" }}>
                 <MDBNavbar
                   color="grey darken-3"
@@ -66,9 +71,12 @@ class Navbar extends Component {
                     >
                       <MDBNavbarNav left>
                         <MDBNavItem active>
-                          <MDBNavLink to="#!">Profile</MDBNavLink>
+                          <MDBNavLink to="/profile">Profile</MDBNavLink>
                         </MDBNavItem>
-                        <MDBNavItem active>
+                        <MDBNavItem>
+                          <MDBNavLink to="/public">Public</MDBNavLink>
+                        </MDBNavItem>
+                        <MDBNavItem>
                           <a onClick={logout}>Logout</a>
                         </MDBNavItem>
                       </MDBNavbarNav>
@@ -76,7 +84,6 @@ class Navbar extends Component {
                   </MDBContainer>
                 </MDBNavbar>
               </MDBContainer>
-            </Router>
           </Wrapper>
         );
   }

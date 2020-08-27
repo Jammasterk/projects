@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const UserContext = React.createContext();
@@ -67,7 +67,7 @@ export default function UserProvider(props) {
   function handleAuthErr(errMsg) {
     setUserState((prevState) => ({
       ...prevState,
-      errMsg
+      errMsg,
     }));
   }
 
@@ -78,53 +78,59 @@ export default function UserProvider(props) {
     }));
   }
 
-  function getUserBlogs(){
-      userAxios.get('/api/blog/user')
-      .then(res => {
-          setUserState(prevState => ({
-              ...prevState,
-              blogs: res.data
-          }))
+  function getUserBlogs() {
+    userAxios
+      .get("/api/blog/user")
+      .then((res) => {
+        setUserState((prevState) => ({
+          ...prevState,
+          blogs: res.data,
+        }));
       })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch((err) => console.log(err.response.data.errMsg));
   }
 
-  function addNewBlog(newBlog){
-      userAxios.post("/api/blog", newBlog)
-      .then(res =>{
-          setUserState(prevState => ({
-              ...prevState,
-              blogs: [...prevState.blogs, res.data]
-          }))
+  function addNewBlog(newBlog) {
+    userAxios
+      .post("/api/blog", newBlog)
+      .then((res) => {
+        setUserState((prevState) => ({
+          ...prevState,
+          blogs: [...prevState.blogs, res.data],
+        }));
       })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch((err) => console.log(err.response.data.errMsg));
   }
 
-  function updateBlog(updates, blogId){
-      userAxios.put(`/api/blog/${blogId}`, updates)
-      .then(res => {
-          console.log(res)
-          setUserState(prevState => ({
-              ...prevState,
-              blogs: prevState.blogs.map(blog => blog._id !== blogId ? blog : res.data)
-          }))
+  function updateBlog(updates, blogId) {
+    userAxios
+      .put(`/api/blog/${blogId}`, updates)
+      .then((res) => {
+        console.log(res);
+        setUserState((prevState) => ({
+          ...prevState,
+          blogs: prevState.blogs.map((blog) =>
+            blog._id !== blogId ? blog : res.data
+          ),
+        }));
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   }
 
-  function deleteBlog(blogId){
-      userAxios.delete(`/api/blog/${blogId}`)
-      .then(res => {
-          setUserState(prevState => ({
-              blogs: prevState.blogs.filter(blog => blog._id !== blogId)
-          }))
+  function deleteBlog(blogId) {
+    userAxios
+      .delete(`/api/blog/${blogId}`)
+      .then((res) => {
+        setUserState((prevState) => ({
+          blogs: prevState.blogs.filter((blog) => blog._id !== blogId),
+        }));
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-      getUserBlogs()
-  }, [])
+    getUserBlogs();
+  }, []);
 
   return (
     <UserContext.Provider

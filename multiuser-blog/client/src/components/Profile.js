@@ -41,6 +41,7 @@ const Profile = () => {
     const fullUser = users + user2
 
     const time = moment().format("h:mm a"); 
+    
     return (
       <div>
         <Wrapper>
@@ -48,7 +49,7 @@ const Profile = () => {
             Welcome {fullUser}, it is now {time}
           </h2>
           <h4>Write an article:</h4>
-          <BlogForm addNewBlog={addNewBlog} /> 
+          <BlogForm addNewBlog={addNewBlog} updateBlog={updateBlog}/> 
           <BlogList 
           blogs={blogs} 
           />

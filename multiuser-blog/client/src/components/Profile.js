@@ -1,6 +1,6 @@
 import React, {useContext} from "react"
 import BlogList from "./BlogList"
-import BlogForm from "./BlogForm"
+// import BlogForm from "./BlogForm"
 import {UserContext} from "../context/UserProvider"
 import moment from "moment"
 import styled from "styled-components"
@@ -49,9 +49,11 @@ const Profile = () => {
             Welcome {fullUser}, it is now {time}
           </h2>
           <h4>Write an article:</h4>
-          <BlogForm addNewBlog={addNewBlog} updateBlog={updateBlog}/> 
-          <BlogList 
-          blogs={blogs} 
+          {/* <BlogForm addNewBlog={addNewBlog} updateBlog={updateBlog} /> */}
+          <BlogList
+            blogs={blogs}
+            updateBlog={updateBlog}
+            addNewBlog={addNewBlog}
           />
         </Wrapper>
       </div>

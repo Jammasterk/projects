@@ -45,6 +45,7 @@ export default function UserProvider(props) {
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
         getUserBlogs();
+        getBlogs();
         setUserState((prevUserState) => ({
           ...prevUserState,
           user,
@@ -90,6 +91,18 @@ export default function UserProvider(props) {
       .catch((err) => console.log(err.response.data.errMsg));
   }
 
+  function getBlogs(){
+    userAxios.get('/api/blog')
+      .then(res => {
+        console.log(res.data)
+        setUserState((prevState) => ({
+          ...prevState,
+          blogs: res.data,
+        }))
+      })
+    
+  }
+
   function addNewBlog(newBlog) {
     userAxios
       .post("/api/blog", newBlog)
@@ -131,6 +144,10 @@ export default function UserProvider(props) {
   useEffect(() => {
     getUserBlogs();
   }, []);
+
+  useEffect(() => {
+    getBlogs()
+  }, [])
 
   return (
     <UserContext.Provider

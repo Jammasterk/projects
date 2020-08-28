@@ -13,7 +13,7 @@ function BlogForm(props){
 
     };
          const [inputs, setInputs] = useState(initInputs);
-         const {addNewBlog} = props
+         
 
         function handleChange(e) {
           const { name, value } = e.target;
@@ -25,15 +25,16 @@ function BlogForm(props){
 
         function handleSubmit(e) {
           e.preventDefault();
-          addNewBlog(inputs);
-        //   props.submit(inputs, props._id);
+          console.log(inputs)
+          // addNewBlog(inputs)
+          props.submit(inputs, props._id)
           setInputs(initInputs);
         }
 
     const {title, author, content, image, tags} = inputs
 
     return (
-      <div>
+      
         <form onSubmit={handleSubmit} className="w-75 m-auto">
           <MDBInput
             label="Title"
@@ -72,9 +73,9 @@ function BlogForm(props){
             onChange={handleChange}
           />
           
-          <button>Submit</button>
+          <button>{props.btnTxt}</button>
         </form>
-      </div>
+      
     );
 }
 

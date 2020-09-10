@@ -144,7 +144,7 @@ export default function UserProvider(props) {
   useEffect(() => {
     getUserBlogs();
   }, []);
-
+  
   useEffect(() => {
     getBlogs()
   }, [])
@@ -158,6 +158,7 @@ export default function UserProvider(props) {
         login,
         logout,
         addNewBlog,
+        getBlogs,
         updateBlog,
         deleteBlog,
         resetAuthErr,

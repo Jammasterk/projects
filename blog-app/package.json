@@ -18,5 +18,8 @@
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1",
     "react-textarea-autosize": "^7.1.2"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^2.0.1"
   }
 }

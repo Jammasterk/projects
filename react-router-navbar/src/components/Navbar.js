@@ -17,7 +17,8 @@ import styled from "styled-components"
      display: none;
      margin-top: -100px;
      height: 100%;
-     /* width: 25%; */
+     overflow: hidden;
+     width: 50%;
      background: #40514e;
      /* opacity: 0.9; */
      -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -32,13 +33,11 @@ import styled from "styled-components"
    a {
      text-decoration: none;
      color: white;
-     width: 1000px !important;
+     margin-left: 1em;
      font-size: 30px;
      font-family: "Roboto", sans-serif;
-     padding-right: 600px
+     padding-right: 50vw;
    }
-
-
 
    @-webkit-keyframes slide-bottom {
      0% {
@@ -69,9 +68,14 @@ import styled from "styled-components"
      width: 100%;
    }
    li {
-     padding: 2em;
-     width: 25%;
+     padding: 2em 0 2em 0;
+     width: 100%;
      cursor: pointer;
+     /* margin-left: 1em; */
+     /* overflow: hidden */
+   }
+   li:hover {
+     background: #40515e;
    }
    ul {
      list-style: none;
@@ -85,13 +89,17 @@ import styled from "styled-components"
      background: #40514e;
      border: none;
    }
+
+   .outerWrapper{
+       background: pink
+   }
  `;
 
 function click(){
     document.getElementById('navToggle').style.display = "block"
 }
 
-function outsideClick(){
+function liClick(){
     document.getElementById('navToggle').style.display = "none"
 }
 
@@ -105,17 +113,16 @@ const Navbar = () => {
             <div className="line"></div>
           </div>
           <ul id="navToggle">
-            <li onClick={outsideClick} id="list_item_ list_item_top">
+            <li onClick={liClick} id="list_item_ list_item_top">
               <Link to="/">Home</Link>
             </li>
-            <li onClick={outsideClick} id="list_item">
+            <li onClick={liClick} id="list_item">
               <Link to="/about">About</Link>
             </li>
-            <li onClick={outsideClick} id="list_item">
+            <li onClick={liClick} id="list_item">
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
-          <div onClick={outsideClick}></div>
         </div>
       </Wrapper>
     );

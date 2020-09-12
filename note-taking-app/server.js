@@ -22,10 +22,13 @@ app.use('/account', require('./routes/accountRouter'))
 app.use('/contact', require('./routes/contactRouter'))
 
 
-app.use((err, res, req, next) => {
-    console.log(err)
-    return res.send({errMsg: err.message})
-})
+app.use((err, req, res, next) => {
+  console.log(err);
+  if (err.name === "UnauthorizedError") {
+    res.status(err.status);
+  }
+  return res.send({ errMsg: err.message });
+});
 
 app.listen(9000, ()  => {
     console.log("The server is running on PORT 9000")

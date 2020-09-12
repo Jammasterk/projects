@@ -1,15 +1,22 @@
 const express = require('express')
 const noteRouter = express.Router()
-const uuid = require('uuid').v4
+const Note = require('../models/note')
+// const uuid = require('uuid').v4
 
-const notes = [
-    {title: "", date: '', note: '', _id: uuid()}
-]
+// const notes = [
+//     {title: "", date: '', note: '', _id: uuid()}
+// ]
 
 // Get all notes
 
-noteRouter.get('/', (req, res) => {
-    res.send(notes)
+noteRouter.get('/', (req, res, next) => {
+   Note.find((err, notes) => {
+       if(err){
+            res.status(500)
+            return next(err)
+       }
+       return res.status(201).send(notes)
+   })
 })
 
 // Get notes by id
@@ -26,31 +33,65 @@ noteRouter.get('/:noteId', (req, res, next) => {
 
 // Add new note
 
-noteRouter.post('/', (req, res) => {
-    const newNote = req.body
-    newNote._id = uuid()
-    notes.push(newNote)
-    res.send(newNote)
+noteRouter.post('/', (req, res, next) => {
+    const newNote = new Note(req.body)
+    newNote.save((err, savedNote) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(savedNote)
+    })
 })
 
 // Update note
 
-noteRouter.put('/:noteId', (req, res) => {
-    const noteId = req.params.noteId
-    const updateObject = req.body
-    const noteIndex = notes.findIndex(note => note._id === noteId)
-    const updateNote = Object.assign(notes[noteIndex], updateObject)
-    res.send(updateNote)
+// noteRouter.put('/:noteId', (req, res) => {
+//     const noteId = req.params.noteId
+//     const updateObject = req.body
+//     const noteIndex = notes.findIndex(note => note._id === noteId)
+//     const updateNote = Object.assign(notes[noteIndex], updateObject)
+//     res.send(updateNote)
+// })
+
+noteRouter.put("/:noteId", (req, res, next) => {
+    Note.findOneAndUpdate(
+        {_id: req.params.noteId},
+        req.body,
+        {new: true},
+        (err, updateNote) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(updateNote)
+        }
+    )
 })
 
 // Delete Note
 
-noteRouter.delete('/:noteId', (req, res) => {
-    const noteId = req.params.noteId
-    const noteIndex = notes.findIndex(note => note._id === noteId)
-    notes.splice(noteIndex, 1)
-    res.send(`Successfully deleted ${notes.title}`)
+// noteRouter.delete('/:noteId', (req, res) => {
+//     const noteId = req.params.noteId
+//     const noteIndex = notes.findIndex(note => note._id === noteId)
+//     notes.splice(noteIndex, 1)
+//     res.send(`Successfully deleted ${notes.title}`)
+// })
+
+noteRouter.delete('/:noteId', (req, res, next) => {
+    Note.findOneAndDelete(
+        {_id: req.params.noteId},
+        (err, deleteNote) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(`Successfully deleted ${deleteNote.title}`)
+        }
+    )
 })
+
+
 
 
 

@@ -46,13 +46,13 @@ const Note = () => {
     return (
       <Wrapper>
         <form>
-          <h4 class="h4 mb-4">Write a note...</h4>
+          <h4 className="h4 mb-4">Write a note...</h4>
           <input type="text" placeholder="Subject"/>
           <textarea name="" id="" cols="30" rows="10" placeholder="Note"></textarea>
           <label htmlFor="">Date</label>
           <input type="date" />
           <input type="text" placeholder="Image" />
-          <button type="button" class="btn btn-mdb-color">
+          <button type="button" className="btn btn-mdb-color">
             Submit
           </button>
         </form>

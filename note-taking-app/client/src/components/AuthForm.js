@@ -1,7 +1,5 @@
 import React, {useState} from "react"
 import styled from "styled-components"
-import Navbar from "./AccountForm"
-import Auth from "./Auth"
 const Wrapper = styled.div`
 
   
@@ -67,9 +65,8 @@ const AuthForm = (props) => {
               placeholder="Username"
               value={username}
               name="username"
-              id="first_name"
               type="text"
-              class="validate"
+              className="validate"
               onChange={handleChange}
             ></input>
             <input
@@ -77,11 +74,10 @@ const AuthForm = (props) => {
               value={password}
               name="password"
               placeholder="Password"
-              id="first_name"
-              class="validate"
+              className="validate"
               onChange={handleChange}
             ></input>
-            <a className="waves-effect waves-light btn">{btnText}</a>
+            <button type="submit" className="waves-effect waves-light btn">{btnText}</button>
             {!toggle ? (
               <>
                 <p

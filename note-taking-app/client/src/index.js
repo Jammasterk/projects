@@ -2,14 +2,14 @@ import React from "react"
 import "materialize-css";
 import ReactDOM from "react-dom"
 import {BrowserRouter as Router} from "react-router-dom"
-// import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
+import UserProvider from "./context/UserProvider"
 import App from "./App"
 
 ReactDOM.render(
   <Router>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </Router>,
   document.getElementById("root")
 );

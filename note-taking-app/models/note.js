@@ -17,7 +17,12 @@ const noteSchema = new Schema({
 
     image: {
         type: String,
-        required: false
+        required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 })
 

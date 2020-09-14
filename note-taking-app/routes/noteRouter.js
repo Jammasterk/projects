@@ -26,7 +26,7 @@ noteRouter.get('/:noteId', (req, res, next) => {
     const foundNote = notes.find(note => note._id === noteId)
     if(!foundNote){
         const error = new Error('The server returned a response of undefined - Invalid ID')
-        return next(err)
+        return next(error)
     }
     res.send(foundNote)
 })

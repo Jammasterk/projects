@@ -5,7 +5,11 @@ import {UserContext} from "../context/UserProvider"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-    h1, p{
+    h1{
+        text-align: center
+    }
+
+    h5{
         text-align: center
     }
 `

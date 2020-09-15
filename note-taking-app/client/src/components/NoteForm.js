@@ -63,7 +63,7 @@ const Wrapper = styled.div`
   }
   textarea {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightGrey;
     margin: 3em 0;
   }
   button {
@@ -73,6 +73,9 @@ const Wrapper = styled.div`
   label {
     font-size: 16px;
     color: lightGrey;
+  }
+  textarea{
+    height: 200px
   }
 `;
 
@@ -95,7 +98,7 @@ function handleSubmit(e){
 
 }
 
-const {title, note, date, image} = inputs
+const {title, note, date} = inputs
     return (
       
         <Wrapper>
@@ -110,8 +113,8 @@ const {title, note, date, image} = inputs
               />
               <textarea
                 id=""
-                cols="30"
-                rows="10"
+                cols="80"
+                rows="40"
                 placeholder="Note"
                 name="note"
                 value={note}
@@ -124,13 +127,13 @@ const {title, note, date, image} = inputs
                 value={date}
                 onChange={handleChange}
               />
-              <input
+              {/* <input
                 type="text"
                 placeholder="Image"
                 name="image"
                 value={image}
                 onChange={handleChange}
-              />
+              /> */}
               <button type="submit" className="btn btn-mdb-color">
                 Submit
               </button>

@@ -4,24 +4,28 @@ import AccountForm from "./components/AccountForm"
 import Navbar from "./components/Navbar"
 import {UserContext} from "./context/UserProvider"
 import Profile from "./components/Profile"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 import {Switch, Route, Redirect} from "react-router-dom"
 const App = () => {
   const {token, logout} = useContext(UserContext)
     return (
       <div>
-          <Navbar logout={logout}/>
+         {/* {token && <Navbar logout={logout}/>} */}
+         <Navbar logout={logout} token={token} />
         <Switch>
           <Route 
           exact 
           path="/" 
           render={() =>  token ? <Redirect to='/notes' /> : <Auth />}/>
-          <Route
-           to="/notes"
-           render={() => <Profile />}
-           >
+          <ProtectedRoute
+           path="/notes"
+           component={Profile}
+           redirectTo="/"
+           token={token}
+           />
           
-          </Route>
+          
           <Route to="/account">
           <AccountForm />
           </Route>

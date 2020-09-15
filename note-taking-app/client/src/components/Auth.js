@@ -16,7 +16,7 @@ const Auth = () => {
         const [inputs, setInputs] = useState(initInputs)
         const [toggle, setToggle] = useState(false)
 
-        const {signup, login} = useContext(UserContext)
+        const {signup, login, errMsg, resetAuthErr} = useContext(UserContext)
 
         function handleChange(e) {
             const {name, value} = e.target
@@ -34,6 +34,11 @@ const Auth = () => {
             login(inputs)
         }
 
+        function toggleForm(){
+          setToggle((prev) => !prev)
+          resetAuthErr()
+        }
+
     return (
       <div>
         <Wrapper>
@@ -45,11 +50,12 @@ const Auth = () => {
                 handleSubmit={handleSignup}
                 inputs={inputs}
                 btnText="Sign up today"
+                errMsg={errMsg}
               />
               <p
                 style={{ color: "#000 !important" }}
                 href=""
-                onClick={() => setToggle((prev) => !prev)}
+                onClick={toggleForm }
               >
                 Already A member?
               </p>
@@ -61,8 +67,9 @@ const Auth = () => {
                 handleSubmit={handleLogin}
                 inputs={inputs}
                 btnText="Login"
+                errMsg={errMsg}
               />
-              <p href="" onClick={() => setToggle((prev) => !prev)}>
+              <p href="" onClick={toggleForm}>
                 Not yet a member?
               </p>
             </>

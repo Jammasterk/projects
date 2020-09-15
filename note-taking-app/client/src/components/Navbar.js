@@ -2,20 +2,20 @@ import React from "react"
 import {Link} from "react-router-dom"
 
 const Navbar = (props) => {
-  const {logout} = props
+  const {logout, token} = props
     return (
       <nav className="navbar navbar-expand-lg navbar-dark primary-color">
 
         
 
         <ul>
-          <li>
+          {/* <li>
             <Link to="/">Auth</Link>
-          </li>
+          </li> */}
           <li>
-            <Link to="/notes">Notes</Link>
+            {token && <Link to="/notes">Notes</Link>}
           </li>
-          <li onClick={logout}>Logout</li>
+          {token && <li onClick={logout}>Logout</li>}
         </ul>
       </nav>
     );

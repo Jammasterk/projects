@@ -17,7 +17,8 @@ export default function UserProvider(props){
     {
     user: JSON.parse(localStorage.getItem("user")) || {}, 
     token: localStorage.getItem("token") || '', 
-    notes: []
+    notes: [],
+    errMsg: ""
 }
     const [userState, setUserState] = useState(initState)
 
@@ -35,7 +36,7 @@ export default function UserProvider(props){
                 token
             }))
         })
-        .catch(err => console.dir(err.response.data.errMsg))
+        .catch(err => handleAuthErr(err.response.data.errMsg))
     }
 
     // Login
@@ -54,7 +55,7 @@ export default function UserProvider(props){
                 token,
               }));
           })
-          .catch((err) => console.dir(err.response.data.errMsg));
+          .catch((err) => handleAuthErr(err.response.data.errMsg));
     }
 
     // Logout
@@ -67,6 +68,20 @@ export default function UserProvider(props){
             token: "",
             notes: []    
         })
+    }
+
+    function handleAuthErr(errMsg){
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg
+        }))
+    }
+
+    function resetAuthErr(){
+        setUserState(prevState => ({
+            ...prevState,
+            errMsg: ''
+        }))
     }
 
     function getUserNote(){
@@ -100,7 +115,8 @@ export default function UserProvider(props){
                 signup,
                 login,
                 logout,
-                addNote
+                addNote,
+                resetAuthErr
             }}
         >
             {props.children}

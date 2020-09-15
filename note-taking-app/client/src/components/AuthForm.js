@@ -50,6 +50,7 @@ const AuthForm = (props) => {
       handleChange,
       handleSubmit,
       btnText,
+      errMsg,
       inputs: { username, password },
     } = props;
 
@@ -78,6 +79,7 @@ const AuthForm = (props) => {
               onChange={handleChange}
             ></input>
             <button type="submit" className="waves-effect waves-light btn">{btnText}</button>
+            <p style={{color: "red"}}>{errMsg}</p>
             {!toggle ? (
               <>
                 <p

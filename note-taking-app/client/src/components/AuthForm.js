@@ -28,7 +28,7 @@ const Wrapper = styled.div`
     margin-bottom: 1em;
   }
 
-  a {
+  button {
     width: 100%;
     margin: 3.5em 0;
   }

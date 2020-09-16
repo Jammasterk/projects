@@ -7,9 +7,14 @@ import styled from "styled-components"
 const Wrapper = styled.div`
 
 h5{
-    width: 80%;
-    margin: 0 auto
+    /* width: 80%;
+    margin: 0 auto */
+    text-align: center
 }
+h1{
+        text-align: center;
+        font-size: 32px
+    }
 `
 
 

@@ -18,6 +18,7 @@ export default function UserProvider(props){
     user: JSON.parse(localStorage.getItem("user")) || {}, 
     token: localStorage.getItem("token") || '', 
     notes: [],
+    contact: [],
     errMsg: ""
 }
     const [userState, setUserState] = useState(initState)
@@ -49,6 +50,7 @@ export default function UserProvider(props){
               localStorage.setItem("token", token);
               localStorage.setItem("user", JSON.stringify(user));
               getUserNote()
+              getUserContact()
               setUserState((prevUserState) => ({
                 ...prevUserState,
                 user,
@@ -66,7 +68,8 @@ export default function UserProvider(props){
         setUserState({
             user: [],
             token: "",
-            notes: []    
+            notes: [],
+            contact: [] 
         })
     }
 
@@ -95,7 +98,7 @@ export default function UserProvider(props){
         .catch(err => console.log(err))
     }
 
-    // Get all notes
+    // Add notes
 
     function addNote(newNote){
         userAxios.post("/api/notes", newNote)
@@ -103,6 +106,32 @@ export default function UserProvider(props){
             setUserState(prevState => ({
                 ...prevState,
                 notes: [...prevState.notes, res.data]
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    // get User contact
+
+    function getUserContact(){
+        userAxios.get('/api/contact/user')
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                contact: res.data 
+            }))
+        })
+        .catch(err => console.log(err))
+    }
+
+    // Add Contact
+
+    function addContact(newContact){
+        userAxios.post('/api/contact', newContact)
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                contact: [...prevState.contact, res.data]
             }))
         })
         .catch(err => console.log(err.response.data.errMsg))
@@ -116,6 +145,7 @@ export default function UserProvider(props){
                 login,
                 logout,
                 addNote,
+                addContact,
                 resetAuthErr
             }}
         >

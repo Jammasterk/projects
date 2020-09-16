@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     margin-top: 12em;
     margin-right: 6em;
     box-shadow: 0 0 25px #f0f0f0;
-    padding: 1.5em;
+    padding: 6em 1.5em;
     border-radius: 8px;
   }
 
@@ -80,7 +80,7 @@ const AuthForm = (props) => {
             ></input>
             <button type="submit" className="waves-effect waves-light btn">{btnText}</button>
             <p style={{color: "red"}}>{errMsg}</p>
-            {!toggle ? (
+            {/* {!toggle ? (
               <>
                 <p
                   style={{ color: "#000 !important" }}
@@ -95,7 +95,7 @@ const AuthForm = (props) => {
                   Not yet a member?
                 </p>
               </>
-            )}
+            )} */}
           </form>
         </div>
       </Wrapper>

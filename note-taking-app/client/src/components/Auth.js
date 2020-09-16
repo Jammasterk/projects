@@ -7,6 +7,14 @@ const Wrapper = styled.div`
     h1{
         margin-left: 2em
     }
+    p{
+      display: inline-block !important;
+      position: absolute;
+      right: 0;
+      top:0;
+      margin-right: 11%;
+      margin-top: 45%
+    }
 `
 
 const initInputs = {username: "" , password: ""}

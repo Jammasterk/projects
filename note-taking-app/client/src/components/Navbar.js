@@ -15,7 +15,12 @@ const Navbar = (props) => {
           <li>
             {token && <Link to="/notes">Notes</Link>}
           </li>
-          {token && <li onClick={logout}>Logout</li>}
+          <li>
+            {token && <Link to='/contact'>Contact</Link>}
+          </li>
+          {token && <li onClick={logout}>Logout
+            </li>}
+
         </ul>
       </nav>
     );

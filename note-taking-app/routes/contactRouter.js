@@ -1,39 +1,70 @@
 const express = require('express')
-const accountRouter = require('./accountRouter')
 const contactRouter = express.Router()
-const uuid = require('uuid').v4
+const Contact = require('../models/contact')
 
-const contacts = [
-    {name: "Jacob Bingham", phone: "208-234-4000", age: 34, email: "jacob@gmail.com", address: "1025 Gray", state: "Pocatello", state: "Idaho", _id: uuid()}
-]
 
-contactRouter.get("/", (req, res) => {
-    res.send(contacts)
+// Get all contacts
+
+contactRouter.get('/', (req, res, next) => {
+    Contact.find((err, contacts) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(contacts)
+    })
 })
 
-contactRouter.get('/:contactId', (req, res) => {
-    const contactId = req.params.contactId
-    const foundContact = contacts.find(contact => contact._id === contactId)
-    if(!foundContact){
-        const error = new Error(' The server could not find contact ID')
-        return next(error)
-    }
-    res.send(foundContact)
+// Get contacts by ID
+
+contactRouter.get('/user', (req, res, next) => {
+    Contact.find({user: req.user._id}, (err, contacts) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(contacts)
+    })
 })
 
-contactRouter.post('/', (req, res) => {
-    const newContact = req.body
-    newContact._id = uuid()
-    contacts.push(newContact)
-    res.send(newContact)
+contactRouter.post('/', (req, res, next) => {
+    req.body.user = req.user._id
+    const newContact = new Contact(req.body)
+    newContact.save((err, savedContact) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(savedContact)
+    })
 })
 
-contactRouter.put('/:contactId', (req, res) => {
-    const contactId = req.params.contactId
-    const updateObject = req.body
-    const contactIndex = contacts.findIndex(contact => contact._id === contactId)
-    const updateContact = Object.assign(contacts[contactIndex], updateObject)
-    res.send(updateContact)
+contactRouter.put('/:contactId', (req, res, next) => {
+    Contact.findOneAndUpdate(
+        {_id: req.params.contactId, user: req.user._id},
+        req.body,
+        {new: true},
+        (err, updateContact) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(201).send(updateContact)
+        }
+    )
+})
+
+contactRouter.delete('/:contactId', (req, res, next) => {
+    Contact.findOneAndDelete(
+        {_id: req.params.contactId, user: req.user._id},
+        (err, deleteContact) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(`Successfully deleted ${deleteContact.title}`)
+        }
+    )
 })
 
 module.exports = contactRouter

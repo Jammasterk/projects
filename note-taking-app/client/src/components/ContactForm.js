@@ -43,6 +43,8 @@ function ContactForm(props){
         setInputs(initInputs)
     }
 
+    
+
     const {title, number, email, address, nickname, birthday, note} = inputs
     return (
       <Wrapper>
@@ -56,7 +58,7 @@ function ContactForm(props){
               onChange={handleChange}
             />
             <input
-              type="text"
+              type="tel"
               placeholder="Number"
               name="number"
               value={number}
@@ -84,7 +86,7 @@ function ContactForm(props){
               onChange={handleChange}
             />
             <input
-              type="text"
+              type="date"
               name="birthday"
               value={birthday}
               onChange={handleChange}

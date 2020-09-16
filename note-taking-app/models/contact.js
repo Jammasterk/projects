@@ -12,23 +12,23 @@ const contactSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   address: {
     type: String,
-    required: true,
+    required: false,
   },
   nickname: {
     type: String,
-    required: true,
+    required: false,
   },
   birthday: {
     type: String,
-    required: true,
+    required: false,
   },
   note: {
     type: String,
-    required: true,
+    required: false,
   },
   user: {
     type: Schema.Types.ObjectId,

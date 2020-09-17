@@ -1,16 +1,20 @@
 import React, {useState} from "react"
 import styled from "styled-components"
 const Wrapper = styled.div`
-
-  
-  .wrapper{
-      width: 50%;
-      height: 100%;
-      display: flex
+  .wrapper {
+    /* width: 50%; */
+    height: 100%;
+    display: grid;
+    grid-auto-columns: repeat(2, 50%)
   }
 
-  source{
-      width: 50%
+  video {
+    max-width: 50%;
+    margin: 0 !important
+  }
+
+  source {
+    max-width: 50%;
   }
 
   .container {
@@ -35,9 +39,37 @@ const Wrapper = styled.div`
   input {
     margin: 6.5em 0;
   }
-  p{
-      width: 100%;
-      text-align: center
+  p {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 849px) {
+    .container {
+      margin: 0 auto;
+      width: 90%;
+      padding: 0;
+      top: 400px;
+      position: absolute;
+      display: block;
+    }
+    h1 {
+      margin: 0 !important;
+      font-size: 24px;
+    }
+  }
+  video {
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+  }
+  source {
+    margin: 0 auto;
+    position: absolute;
+    width: 90%;
+  }
+  .wrapper{
+    margin: 0 auto
   }
 `;
 
@@ -79,23 +111,7 @@ const AuthForm = (props) => {
               onChange={handleChange}
             ></input>
             <button type="submit" className="waves-effect waves-light btn">{btnText}</button>
-            <p style={{color: "red"}}>{errMsg}</p>
-            {/* {!toggle ? (
-              <>
-                <p
-                  style={{ color: "#000 !important" }}
-                  onClick={() => setToggle((prev) => !prev)}
-                >
-                  Already A member?
-                </p>
-              </>
-            ) : (
-              <>
-                <p onClick={() => setToggle((prev) => !prev)}>
-                  Not yet a member?
-                </p>
-              </>
-            )} */}
+            <p style={{color: "red", margin: "auto"}}>{errMsg}</p>
           </form>
         </div>
       </Wrapper>

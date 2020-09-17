@@ -5,15 +5,19 @@ import {UserContext} from "../context/UserProvider"
 
 const Wrapper = styled.div`
     h1{
-        margin-left: 2em
+        /* margin-left: 2em */
+        text-align: center;
+        font-size: 32px;
+        width: 90%;
+        margin: auto !important
     }
     p{
       display: inline-block !important;
       position: absolute;
       right: 0;
       top:0;
-      margin-right: 11%;
-      margin-top: 45%;
+      margin-right: 150px;
+      margin-top: 38%;
       cursor: pointer
     }
 `

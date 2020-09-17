@@ -3,16 +3,22 @@ import styled from "styled-components"
 
 
 const Wrapper = styled.div`
-  form{
-    width: 50%;
-    margin: auto
+  form {
+    width: 60%;
+    margin: auto;
+    box-shadow: 0 0 10px lightgray;
+    padding: 1.5em;
+    border-radius: 5px
   }
-  button{
+  button {
     width: 50%;
     margin-top: 2em;
-    margin-bottom: 4em
+    margin-bottom: 4em;
   }
-`
+
+  form {
+  }
+`;
 
 
 const initInputs ={
@@ -50,6 +56,7 @@ function ContactForm(props){
       <Wrapper>
         <div>
           <form onSubmit={handleSubmit} className="m-auto">
+            <label htmlFor="">Required</label>
             <input
               type="text"
               placeholder="Name"
@@ -57,8 +64,10 @@ function ContactForm(props){
               value={title}
               onChange={handleChange}
             />
-            <input
+            <label htmlFor="">Required</label>
+           <input
               type="tel"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               placeholder="Number"
               name="number"
               value={number}
@@ -66,7 +75,7 @@ function ContactForm(props){
             />
             <input
               type="text"
-              placeholder="email"
+              placeholder="Email"
               name="email"
               value={email}
               onChange={handleChange}
@@ -96,6 +105,7 @@ function ContactForm(props){
               name="note"
               value={note}
               onChange={handleChange}
+              placeholder="Note"
             />
             <button type="submit" className="btn btn-mdb-color">
               Submit

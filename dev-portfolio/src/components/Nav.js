@@ -3,20 +3,21 @@ import {Link} from "react-router-dom"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
+  font-family: "Source Sans Pro", sans-serif;
 
-.outside{
+  .outside {
     position: absolute;
     background: transparent;
     /* height: 100%; */
-    width: 100%
-}
+    width: 100%;
+  }
 
   .navbar {
     position: "absolute";
     top: 0;
-}
+  }
 
-ul {
+  ul {
     border: none !important;
     background: grey;
     display: flex;
@@ -27,27 +28,31 @@ ul {
     right: 0;
     list-style: none;
     z-index: 2;
-    top: 0
-    /* opacity: .4 */
+    top: 0;
+    opacity: 0.9;
+    
   }
 
-  li{
-      font-size: 34px;
-      margin: 16px 0;
+  li {
+    font-size: 34px;
+    margin: 16px 1em;
   }
 
   a {
     font-size: 32px !important;
     border: none !important;
     text-align: center;
+    font-weight: 200;
+    color: #fff;
+    text-decoration: none
   }
 
- .hamburger {
+  .hamburger {
     height: 100%;
     position: absolute;
     right: 0;
     margin-right: 2em;
-    z-index: 12
+    z-index: 12;
   }
 
   .line {
@@ -57,10 +62,24 @@ ul {
     border-radius: 5px;
     margin: 5px 0;
   }
-  
+
   .navbar {
     display: flex;
     margin-top: 1em;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 200;
+    padding: 8px 16px;
+    border: 1px solid #fff;
+    display: inline-block;
+  }
+
+  .nav-link:hover {
+    color: black;
   }
 `;
 

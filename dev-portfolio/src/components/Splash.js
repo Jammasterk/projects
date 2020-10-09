@@ -107,7 +107,7 @@ export default function Splash() {
             <div className="text">
               <h1 className="title">Jared Manwaring</h1>
               <p>
-                Hi, My name is Jared. I am a full stack web developer located in
+                Hi, my name is Jared. I am a full stack web developer located in
                 Salt Lake City, UT. As a recent fullstack bootcamp graduate I am
                 looking to find a{" "}
               </p>

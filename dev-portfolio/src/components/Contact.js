@@ -6,32 +6,37 @@ import styled from "styled-components"
 const Wrapper = styled.div`
   font-family: "Source Sans Pro", sans-serif;
 
-  .container{
-      width: 100%;
-      height: 100%
+
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    top: 0;
   }
 
-  .overlay{
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: black;
-      height: 100%;
-      width: 100%;
-      opacity: .5
+  .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: black;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.5;
   }
 
   h1 {
     color: #fff;
     font-weight: 200;
-    margin-bottom: 38px
+    margin-bottom: 38px;
   }
 
-  p{
-      color: #fff;
-      font-size: 25px;
-      font-weight: 200;
-      margin: 8px 0
+  p {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 200;
+    margin: 8px 0;
   }
 
   form {
@@ -54,8 +59,8 @@ const Wrapper = styled.div`
     position: absolute;
     left: 0;
     margin-left: 10%;
-    border-left:1px solid white;
-    padding-left: 2em
+    border-left: 1px solid white;
+    padding-left: 2em;
   }
 
   input {
@@ -63,6 +68,10 @@ const Wrapper = styled.div`
     margin: 0.5em 0;
     border-radius: 4px;
     height: 30px;
+  }
+
+  input:focus{
+    outline: none
   }
 
   textarea {
@@ -78,7 +87,7 @@ const Wrapper = styled.div`
     justify-content: center;
     position: absolute;
     z-index: 3;
-    height: 100%;
+    /* height: 100%; */
   }
 
   .form-inner {
@@ -89,10 +98,10 @@ const Wrapper = styled.div`
     left: 0;
     z-index: -1;
     opacity: 0.8;
-    padding: 24px;
+    padding: 32px;
     position: absolute;
     right: 0;
-    border-radius: 12px
+    border-radius: 12px;
   }
   button {
     margin-top: 2em;
@@ -109,8 +118,8 @@ const Wrapper = styled.div`
     background-size: cover;
     background-position: center;
     top: 0;
-    height: 100vh;
-    width: 100%;
+    height: 100%;
+    width: 100vw;
     position: absolute;
   }
 

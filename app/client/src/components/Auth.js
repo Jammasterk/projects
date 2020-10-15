@@ -1,10 +1,10 @@
 import React, {useState, useContext} from "react"
 import AuthForm from "./AuthForm"
-import {UserContext} from "../context/UserProvider"
+import {UserContext} from "../context/UserProvider.js"
 
 const initInputs = {username: "", password: ""}
 
-const Auth = () => {
+function Auth(){
     const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
 
@@ -29,7 +29,7 @@ const Auth = () => {
 
     function toggleForm(){
         setToggle((prev) => !prev)
-        resetAuthErr()
+        // resetAuthErr()
     }
 
     return(
@@ -38,10 +38,10 @@ const Auth = () => {
                 <>
                 <AuthForm
                     handleChange={handleChange}
-                    handleSignup={handleSignup}
+                    handleSubmit={handleSignup}
                     inputs={inputs}
                     btnText="Sign up"
-                    errMsg={errMsg}
+                    /* errMsg={errMsg} */
                  />
                  <p onClick={toggleForm}>
                      Already A Member?
@@ -53,10 +53,10 @@ const Auth = () => {
                 <>
                 <AuthForm
                     handleChange={handleChange}
-                    handleLogin={handleLogin}
+                    handleSubmit={handleLogin}
                     inputs={inputs}
                     btnText="Login"
-                    errMsg={errMsg}
+                    /* errMsg={errMsg} */
                  />
                  <p onClick={toggleForm}>Note a member?</p>
                 </>
@@ -66,3 +66,6 @@ const Auth = () => {
 }
 
 export default Auth
+
+
+

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import axios from "axios"
 
 export const UserContext = React.createContext()
@@ -27,6 +27,7 @@ export default function UserProvider(props){
 function signup(credentials){
     axios.post('/auth/signup', credentials)
     .then(res => {
+        console.log(res)
         const {user, token} = res.data
         localStorage.setItem("token", token)
         localStorage.setItem('user', JSON.stringify(user))
@@ -37,6 +38,7 @@ function signup(credentials){
         }))
     })
     .catch(err => handleAuthErr(err.response.data.errMsg))
+    .catch(err => console.log(err))
 }
 
 function login(credentials){
@@ -72,14 +74,18 @@ function handleAuthErr(errMsg){
 
 return(
     <UserContext.Provider
-        value={{
-            ...userState,
-            login,
-            logout,
-            signup,
-        }}
-    >
-    {props.children}
-    </UserContext.Provider>
-    )
+            value={{
+                ...userState,
+                login,
+                logout,
+                signup
+            }}
+     >
+     {props.children}
+     </UserContext.Provider>
+)
+
 }
+
+
+

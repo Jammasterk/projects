@@ -70,8 +70,6 @@ const Wrapper = styled.div`
 
 const AuthForm = (props) => {
 
-  // const [toggle, setToggle] = useState(false)
-
   const {
     handleChange,
     handleSubmit,
@@ -125,31 +123,40 @@ const AuthForm = (props) => {
               </Button>
             </div>
             <div className="right">
-              <Form.Group
-                onSubmit={handleSubmit}
-                className="w-100 border p-5 rounded right-0"
-                style={{ background: "#f0f696", height: "400px" }}
-              >
-                <h1>Login / Signup</h1>
-                <Form.Label className="text-muted">Username:</Form.Label>
-                <Form.Control
-                    type="text" 
-                    placeholder="Enter username" 
-                    value={username} 
-                    name="username" 
-                    onChange={handleChange}/>
-                <Form.Label className="text-muted">Password:</Form.Label>
-                <Form.Control 
-                    type="password" 
-                    placeholder="Enter password" 
-                    value={password} 
-                    name="password" 
-                    onChange={handleChange}/>
-                <Button type="submit" variant="success" className="w-100 mt-3">
-                  {btnText}
-                </Button>
-                <p style={{color: "red"}}>{errMsg}</p>
-              </Form.Group>
+              <form action="" onSubmit={handleSubmit}>
+                <Form.Group
+                  className="w-100 border p-5 rounded right-0"
+                  style={{ background: "#f0f696", height: "400px" }}
+                >
+                  <h1>Login / Signup</h1>
+                  <Form.Label className="text-muted">Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter username"
+                    value={username}
+                    name="username"
+                    onChange={handleChange}
+                    autoComplete="false"
+                  />
+                  <Form.Label className="text-muted">Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Enter password"
+                    value={password}
+                    name="password"
+                    onChange={handleChange}
+                    autoComplete="false"
+                  />
+                  <Button
+                    type="submit"
+                    variant="success"
+                    className="w-100 mt-3"
+                  >
+                    {btnText}
+                  </Button>
+                  <p style={{ color: "red" }}>{errMsg}</p>
+                </Form.Group>
+              </form>
             </div>
           </div>
         </Jumbotron>
@@ -159,3 +166,7 @@ const AuthForm = (props) => {
 };
 
 export default AuthForm
+
+
+
+

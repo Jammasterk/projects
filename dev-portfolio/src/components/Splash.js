@@ -109,7 +109,7 @@ export default function Splash() {
               <p>
                 Hi, my name is Jared. I am a full stack web developer located in
                 Salt Lake City, UT. As a recent fullstack bootcamp graduate I am
-                looking to find a{" "}
+                looking to find a
               </p>
               {/* <h2>
                 <Link to="/projects">My work</Link>

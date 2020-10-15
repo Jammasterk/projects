@@ -115,7 +115,7 @@ function Nav(){
             </li>
             <li>
               <Link className="nav-links" to="/contact">
-                Contact Me
+                My resume
               </Link>
             </li>
           </ul>

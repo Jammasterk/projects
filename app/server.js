@@ -1,39 +1,81 @@
-const express = require('express')
-const app = express()
-const morgan = require('morgan')
-const mongoose = require('mongoose')
+// const express = require('express')
+// const app = express()
+// const mongoose = require('mongoose')
+// const morgan = require('morgan')
+// const expressJwt = require('express-jwt')
+// const PORT = 5000
+// require('dotenv').config()
 
-app.use(express.json())
-app.use(morgan('dev'))
+// process.env.SECRET
+
+// app.use(express.json())
+// app.use(morgan('dev'))
+
+// mongoose.connect('mongodb://localhost:27017/user-authentication', {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false
+// },
+// () => console.log('Connected to database')
+// )
+
+// app.use('/auth', require('./routes/authRouter.js'))
+// app.use("/api", expressJwt({secret: process.env.SECRET, algorithms: ["HS256"]}))
+
+// app.use((err, req, res, next) => {
+//     console.log(err)
+//     if(err.name === "UnauthorizedError"){
+//         res.status(err.status)
+//     }
+//     return res.send({errMsg: err.message})
+// })
+
+// app.listen(PORT, () => {
+//     console.log(`The server is running on port ${PORT}`)
+// })
+
+
+const express = require("express");
+var PORT = process.env.PORT || 5000;
+require("dotenv").config();
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const app = express();
+const expressJwt = require("express-jwt");
+
+process.env.SECRET;
+
+app.use(express.json());
+app.use(morgan("dev"));
 
 mongoose.connect(
-    'mongoose://localhost:27017/user-authentication',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    },
-    () => console.log("connected to DB")
-)
+  "mongodb://localhost:27017/user-authentication",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  },
+  () => console.log("Connected to DB")
+);
 
-const movies = [
-    {title: "Die Hard", genre: "action"},
-    {title: "Star Wars", genre: "fantasy"},
-    {title: "Lion King", genre: "Children"},
-    {title: "Friday the 13th", genre: "horror"}
-]
+app.use("/auth", require("./routes/authRouter.js"));
+app.use(
+  "/api",
+  expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] })
+);
+// app.use("/api/post/", require("./routes/postRouter.js"));
+// app.use('/api/comment', require('./routes/commentRouter.js'))
 
-app.get('/movies', (req, res) => {
-    res.send(movies)
-})
+app.use((err, req, res, next) => {
+  console.log(err);
+  if (err.name === "UnauthorizedError") {
+    res.status(err.status);
+  }
+  return res.send({ errMsg: err.message });
+});
 
-app.post('/movies', (req, res) => {
-    const newMovie = req.body
-    movies.push(newMovie)
-    res.send(`Successfully added ${newMovie.title} to the database`)
-})
-
-app.listen(9000, () => {
-    console.log('Server is running on port 9000')
-})
+app.listen(PORT, () => {
+  console.log("The server is up and running on port 8800");
+}); 

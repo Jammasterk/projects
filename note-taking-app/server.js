@@ -4,6 +4,9 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const expressJwt = require('express-jwt')
+const port = process.env.PORT || 4000;
+const path = require('path')
+
 app.use(express.json())
 app.use(morgan('dev'))
 
@@ -25,6 +28,7 @@ app.use('/api/notes', require('./routes/noteRouter'))
 app.use('/api/account', require('./routes/accountRouter'))
 app.use('/api/contact', require('./routes/contactRouter'))
 
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use((err, req, res, next) => {
   console.log(err);
@@ -34,6 +38,14 @@ app.use((err, req, res, next) => {
   return res.send({ errMsg: err.message });
 });
 
-app.listen(9000, ()  => {
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static('client/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+  })
+}
+
+app.listen(port, ()  => {
     console.log("The server is running on PORT 9000")
 })

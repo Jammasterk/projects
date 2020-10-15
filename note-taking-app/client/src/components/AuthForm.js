@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import styled from "styled-components"
 const Wrapper = styled.div`
   .wrapper {
@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 
 const AuthForm = (props) => {
 
-    const [toggle, setToggle] = useState(false)
+    // const [toggle, setToggle] = useState(false)
 
     const {
       handleChange,
@@ -92,7 +92,7 @@ const AuthForm = (props) => {
           <video autoPlay loop>
             <source src="https://global-uploads.webflow.com/5bcb46130508ef456a7b2930/5d05f4b95b891603d2c14b6b_drawkit-grape-pack-illustration-2-transcode.mp4" />
           </video>
-          <form className="container" onSubmit={handleSubmit}>
+          <form className="container mx-auto" onSubmit={handleSubmit}>
             <h3>Welcome</h3>
             <input
               placeholder="Username"

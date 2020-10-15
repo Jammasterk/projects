@@ -17,7 +17,8 @@ const Wrapper = styled.div`
       right: 0;
       top:0;
       margin-right: 150px;
-      margin-top: 38%;
+      margin-top: 25%;
+      
       cursor: pointer
     }
 `

@@ -4,6 +4,7 @@ import {BrowserRouter as Router} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App"
 import UserProvider from "./context/UserProvider"
+import "./index.css"
 
 ReactDOM.render(
   <Router>

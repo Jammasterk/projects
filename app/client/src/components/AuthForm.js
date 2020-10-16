@@ -9,8 +9,12 @@ const generator = require('generate-password')
 
 const Wrapper = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-  background: #e8ffe8;
-  height: 100%;
+  height: 100vh;
+  
+  .background{
+    background: #e8ffe8;
+
+  }
 
   h1,
   p {
@@ -55,9 +59,9 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 850px) {
-    body {
-      background: #e8ffe8;
-    }
+  
+   
+  
 
     .margin-container {
       display: block !important;
@@ -91,16 +95,6 @@ const Wrapper = styled.div`
 `;
 
 const AuthForm = (props) => {
-  const randomNumLength = Math.floor((Math.random() * 10) + 12)
-
- var pass = generator.generate({
-   length: randomNumLength,
-   numbers: true,
-   symbols: true,
-   lowercase: true,
-   uppercase: true
- });
-
 
   const [ toggle, setToggle] = useState('password')
   const [show, setShow] = useState(false)
@@ -149,83 +143,85 @@ const AuthForm = (props) => {
   return (
     <>
       <Wrapper>
-        <Jumbotron
-          className="jumbotron m-auto"
-          style={{ background: "#e8ffe8" }}
-        >
-          <div className="d-flex mx-auto margin-container">
-            <div className=" mt-5 media-div">
-              <h1>{typing}</h1>
-              <div className="h6-flex">
-                <h6>
-                  {`It is now`}{" "}
-                  {
-                    <Moment
-                      interval={1000}
-                      format="dddd, MMMM Do YYYY, h:mm a"
-                    ></Moment>
-                  }
-                </h6>
+        <div className="background">
+          <Jumbotron
+            className="jumbotron m-auto"
+            style={{ background: "#e8ffe8" }}
+          >
+            <div className="d-flex mx-auto margin-container">
+              <div className=" mt-5 media-div">
+                <h1>{typing}</h1>
+                <div className="h6-flex">
+                  <h6>
+                    {`It is now`}{" "}
+                    {
+                      <Moment
+                        interval={1000}
+                        format="dddd, MMMM Do YYYY, h:mm a"
+                      ></Moment>
+                    }
+                  </h6>
+                </div>
+                <p className="splash-text">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Quaerat quam enim rerum necessitatibus quos, vitae cupiditate
+                  dolorum quibusdam animi excepturi.
+                </p>
+                {/* <p>{pass}</p> */}
+                <Button variant="flat" className="w-50 mt-1 mb-4">
+                  Check us out!
+                </Button>
               </div>
-              <p className="splash-text">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Quaerat quam enim rerum necessitatibus quos, vitae cupiditate
-                dolorum quibusdam animi excepturi.
-              </p>
-              {/* <p>{pass}</p> */}
-              <Button variant="flat" className="w-50 mt-1 mb-4">
-                Check us out!
-              </Button>
-            </div>
-            <div className="right">
-              <form action="" onSubmit={handleSubmit}>
-                <Form.Group
-                  className="w-100 border p-5 rounded right-0"
-                  style={{ background: "#f0f696", height: "420px" }}
-                >
-                  <h1>Login / Signup</h1>
-                  <Form.Label className="text-muted">Username:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter username"
-                    value={username}
-                    name="username"
-                    onChange={handleChange}
-                    autoComplete="false"
-                  />
-                  <Form.Label className="text-muted">Password:</Form.Label>
-                  <Form.Control
-                    type={toggle === "password" ? "password" : "text"}
-                    placeholder="Enter password"
-                    value={password}
-                    name="password"
-                    onChange={handleChange}
-                    autoComplete="on"
-                  />
-
-                  <div className="d-flex">
-                    <p
-                      style={{ cursor: "pointer" }}
-                      className="mt-3 ml-1"
-                      onClick={togglePass}
-                    >
-                      {toggleShow === false ? "Hide" : "Show"} password
-                    </p>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="success"
-                    className="w-100 mt-3"
+              <div className="right">
+                <form action="" onSubmit={handleSubmit}>
+                  <Form.Group
+                    className="w-100 border p-5 rounded right-0"
+                    style={{ background: "#f0f696", height: "420px" }}
                   >
-                    {btnText}
-                  </Button>
-                  <p style={{ color: "red" }}>{errMsg}</p>
-                </Form.Group>
-              </form>
+                    <h1>Login / Signup</h1>
+                    <Form.Label className="text-muted">Username:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter username"
+                      value={username}
+                      name="username"
+                      onChange={handleChange}
+                      autoComplete="false"
+                    />
+                    <Form.Label className="text-muted">Password:</Form.Label>
+                    <Form.Control
+                      type={toggle === "password" ? "password" : "text"}
+                      placeholder="Enter password"
+                      value={password}
+                      name="password"
+                      onChange={handleChange}
+                      autoComplete="on"
+                    />
+
+                    <div className="d-flex">
+                      <p
+                        style={{ cursor: "pointer" }}
+                        className="mt-3 ml-1"
+                        onClick={togglePass}
+                      >
+                        {toggleShow === false ? "Hide" : "Show"} password
+                      </p>
+                    </div>
+
+                    <Button
+                      type="submit"
+                      variant="success"
+                      className="w-100 mt-3"
+                    >
+                      {btnText}
+                    </Button>
+                    <p style={{ color: "red" }}>{errMsg}</p>
+                  </Form.Group>
+                </form>
+              </div>
             </div>
-          </div>
-        </Jumbotron>
+          </Jumbotron>
+        </div>
       </Wrapper>
     </>
   );

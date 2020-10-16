@@ -3,15 +3,16 @@ const app = express()
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const expressJwt = require('express-jwt')
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 require('dotenv').config()
+const path = require('path')
 
 process.env.SECRET
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-mongoose.connect('mongodb://localhost:27017/user-authentication', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/user-authentication', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -32,6 +33,22 @@ app.use((err, req, res, next) => {
     return res.send({errMsg: err.message})
 })
 
+// if(process.env.NODE_ENV === "production"){
+//     app.use(express.static('client/build'))
+// }
+
+// ... other app.use middleware setups
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+
 app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`)
 })
+
+console.log(PORT)

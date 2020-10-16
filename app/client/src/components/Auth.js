@@ -41,7 +41,7 @@ function Auth(){
 
     function toggleForm(){
         setToggle((prev) => !prev)
-        // resetAuthErr()
+        resetAuthErr()
     }
 
     return (
@@ -54,7 +54,7 @@ function Auth(){
                 handleSubmit={handleSignup}
                 inputs={inputs}
                 btnText="Sign up"
-                /* errMsg={errMsg} */
+                errMsg={errMsg}
               />
               <p className="toggle-btn" onClick={toggleForm}>Already A Member?</p>
             </>
@@ -65,7 +65,7 @@ function Auth(){
                 handleSubmit={handleLogin}
                 inputs={inputs}
                 btnText="Login"
-                /* errMsg={errMsg} */
+                errMsg={errMsg}
               />
               <p className="toggle-btn" onClick={toggleForm}>Not a member?</p>
             </>

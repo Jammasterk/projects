@@ -11,10 +11,18 @@ const Wrapper = styled.div`
         border-bottom: 1px solid black;
         margin: 1em 0
     }
+
+    .btn:focus{
+        outline: none !important
+    }
+
+    .showtext{
+        transition: all .2s ease-in
+    }
    
 `
 
-export default function Profile() {
+export default function Profile(props) {
 
     const [show, setShow] = useState(false)
 
@@ -55,10 +63,12 @@ export default function Profile() {
         );
     }
 
+    const {title, note, img, _id} = props
+
     return (
       <Wrapper>
         <div className=" w-75 mx-auto mt-5">
-          <h5>Note 1</h5>
+          <h5>{title}</h5>
           <div className="underline"></div>
           <p>Created on {datey}</p>
 
@@ -67,16 +77,14 @@ export default function Profile() {
             style={show ? { display: "block" } : { display: "none" }}
           >
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi id
-              quae minus eos, doloremque sit esse illum repellendus perferendis
-              tempore quos totam consequuntur fugiat veniam!
+              {note}
             </p>
             <img
               className="w-100  mb-3 rounded"
-              src="https://images.pexels.com/photos/2771135/pexels-photo-2771135.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              src={img}
               alt=""
             />
-            <Button className="w-50" variant="danger">
+            <Button className="w-50" variant="danger" onClick={() => props.deleteNote(_id)}>
               Delete
             </Button>
           </div>

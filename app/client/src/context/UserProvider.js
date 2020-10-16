@@ -17,7 +17,8 @@ export default function UserProvider(props){
     {
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || "",
-        errMsg: ''
+        errMsg: '',
+        notes: []
     }
 
     const [userState, setUserState] = useState(initState)
@@ -47,6 +48,7 @@ function login(credentials){
         const {user, token} = res.data
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
+        getUserNote()
         setUserState((prevUserState) => ({
             ...prevUserState,
             user,
@@ -61,7 +63,8 @@ function logout(){
     localStorage.removeItem("user")
     setUserState({
         user: [],
-        token: ""
+        token: "",
+        notes: []
     })
 }
 
@@ -72,13 +75,60 @@ function handleAuthErr(errMsg){
     }))
 }
 
+function resetAuthErr() {
+  setUserState((prevState) => ({
+    ...prevState,
+    errMsg: "",
+  }));
+}
+
+    function getUserNote() {
+      userAxios
+        .get("/api/notes/user")
+        .then((res) => {
+          setUserState((prevState) => ({
+            ...prevState,
+            notes: res.data,
+          }));
+        })
+        .catch((err) => console.log(err));
+    }
+
+    // Add notes
+
+    function addNote(newNote) {
+      userAxios
+        .post("/api/notes", newNote)
+        .then((res) => {
+          setUserState((prevState) => ({
+            ...prevState,
+            notes: [...prevState.notes, res.data],
+          }));
+        })
+        .catch((err) => console.log(err.response.data.errMsg));
+    }
+
+    function deleteNote(noteId){
+        userAxios.delete(`/api/notes/${noteId}`)
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                notes: prevState.notes.filter(note => note._id !== noteId)
+            }))
+        })
+        .catch(err => console.log(err))
+    }
+
 return(
     <UserContext.Provider
             value={{
                 ...userState,
                 login,
                 logout,
-                signup
+                signup,
+                addNote,
+                deleteNote,
+                resetAuthErr
             }}
      >
      {props.children}

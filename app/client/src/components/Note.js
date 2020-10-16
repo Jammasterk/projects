@@ -9,12 +9,31 @@ export default function Note(){
         addNote,
         notes
     } = useContext(UserContext)
-    return(
-        <>
-        <h4 style={{textAlign: "center",marginBottom: "1em"}}>Welcome {username}</h4>
-        <ProfileForm addNote={addNote}/>
+
+   const today = new Date()
+   var curHr= today.getHours()
+
+   function timeOfDay(){
+
+if (curHr < 12) {
+  return <h4 style={{fontWeight: 200}}>good morning</h4>;
+} else if (curHr < 18) {
+  return <h4 style={{fontWeight: 200}}>good afternoon</h4>
+} else {
+  return <h4 style={{fontWeight: 200}}>good evening</h4>
+}
+   }
+
+    
+
+    return (
+      <>
+        <h4 style={{ textAlign: "center", marginBottom: "1em", width: "100%", marginTop: "1em", fontWeight: 200 }}>
+          {timeOfDay()} {username}
+        </h4>
+        <ProfileForm addNote={addNote} />
         {/* <h4 style={{textAlign: "center", marginTop: "1em"}}>Your notes</h4> */}
         <ProfileList notes={notes} />
-        </>
-    )
+      </>
+    );
 } 

@@ -3,13 +3,14 @@ import {Jumbotron, Button, Form} from "react-bootstrap"
 import Moment from "react-moment"
 import styled from "styled-components"
 import Typewriter from "typewriter-effect";
+import Auth from "./Auth"
+const generator = require('generate-password')
 
 
 const Wrapper = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
   background: #e8ffe8;
-
-  height: 100vh;
+  height: 100%;
 
   h1,
   p {
@@ -90,10 +91,20 @@ const Wrapper = styled.div`
 `;
 
 const AuthForm = (props) => {
+  const randomNumLength = Math.floor((Math.random() * 10) + 12)
+
+ var pass = generator.generate({
+   length: randomNumLength,
+   numbers: true,
+   symbols: true,
+   lowercase: true,
+   uppercase: true
+ });
+
 
   const [ toggle, setToggle] = useState('password')
   const [show, setShow] = useState(false)
-
+ 
   const {
     handleChange,
     handleSubmit,
@@ -117,16 +128,24 @@ const AuthForm = (props) => {
       />
     );
 
+    
     function togglePass(e){
       e.preventDefault()
       setToggle(toggle === "text")
     }
-
+    
     function toggleShow(e){
       e.preventDefault()
       setShow(!show === true)
     }
-  
+    
+    const dateForm = ""
+    
+ function lowercaseDate(){
+  return dateForm.toLowerCase()
+  }
+
+
   return (
     <>
       <Wrapper>
@@ -153,6 +172,7 @@ const AuthForm = (props) => {
                 Quaerat quam enim rerum necessitatibus quos, vitae cupiditate
                 dolorum quibusdam animi excepturi.
               </p>
+              {/* <p>{pass}</p> */}
               <Button variant="flat" className="w-50 mt-1 mb-4">
                 Check us out!
               </Button>
@@ -175,18 +195,24 @@ const AuthForm = (props) => {
                   />
                   <Form.Label className="text-muted">Password:</Form.Label>
                   <Form.Control
-                    type={toggle ? "password" : "text"}
+                    type={toggle === "password" ? "password" : "text"}
                     placeholder="Enter password"
                     value={password}
                     name="password"
                     onChange={handleChange}
-                    autoComplete="false"
+                    autoComplete="on"
                   />
+
                   <div className="d-flex">
-                  <p style={{cursor: "pointer"}} className="mt-3 ml-1" onClick={togglePass}>{toggleShow === false ? "Hide" : "Show"} password</p>
+                    <p
+                      style={{ cursor: "pointer" }}
+                      className="mt-3 ml-1"
+                      onClick={togglePass}
+                    >
+                      {toggleShow === false ? "Hide" : "Show"} password
+                    </p>
                   </div>
 
-                  
                   <Button
                     type="submit"
                     variant="success"

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {Jumbotron, Button, Form} from "react-bootstrap"
 import Moment from "react-moment"
 import styled from "styled-components"
@@ -41,6 +41,18 @@ const Wrapper = styled.div`
     display: flex;
   }
 
+  .check{
+    width: 14px
+  }
+
+  .check:focus{
+    outline: none !important
+  }
+
+  .media-div{
+    width: 75%
+  }
+
   @media screen and (max-width: 850px) {
     body {
       background: #e8ffe8;
@@ -53,11 +65,16 @@ const Wrapper = styled.div`
 
     .media-div {
       margin-bottom: 1em;
+      width: 100%
     }
 
     p,
     h1 {
       width: 100% !important;
+    }
+
+    .splash-text{
+      width: 75%
     }
   }
 
@@ -65,10 +82,17 @@ const Wrapper = styled.div`
     h1{
         font-size: 30px
     }
+
+    .splash-text{
+      width: 100% !important
+    }
   }
 `;
 
 const AuthForm = (props) => {
+
+  const [ toggle, setToggle] = useState('password')
+  const [show, setShow] = useState(false)
 
   const {
     handleChange,
@@ -81,6 +105,8 @@ const AuthForm = (props) => {
     },
   } = props
 
+  
+
     const typing = (
       <Typewriter
         options={{
@@ -90,6 +116,16 @@ const AuthForm = (props) => {
         }}
       />
     );
+
+    function togglePass(e){
+      e.preventDefault()
+      setToggle(toggle === "text")
+    }
+
+    function toggleShow(e){
+      e.preventDefault()
+      setShow(!show === true)
+    }
   
   return (
     <>
@@ -99,9 +135,8 @@ const AuthForm = (props) => {
           style={{ background: "#e8ffe8" }}
         >
           <div className="d-flex mx-auto margin-container">
-            <div className="w-75 mt-5 media-div">
+            <div className=" mt-5 media-div">
               <h1>{typing}</h1>
-              {/* <p>Today is {live}</p> */}
               <div className="h6-flex">
                 <h6>
                   {`It is now`}{" "}
@@ -113,7 +148,7 @@ const AuthForm = (props) => {
                   }
                 </h6>
               </div>
-              <p className="w-75">
+              <p className="splash-text">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Quaerat quam enim rerum necessitatibus quos, vitae cupiditate
                 dolorum quibusdam animi excepturi.
@@ -126,7 +161,7 @@ const AuthForm = (props) => {
               <form action="" onSubmit={handleSubmit}>
                 <Form.Group
                   className="w-100 border p-5 rounded right-0"
-                  style={{ background: "#f0f696", height: "400px" }}
+                  style={{ background: "#f0f696", height: "420px" }}
                 >
                   <h1>Login / Signup</h1>
                   <Form.Label className="text-muted">Username:</Form.Label>
@@ -140,13 +175,18 @@ const AuthForm = (props) => {
                   />
                   <Form.Label className="text-muted">Password:</Form.Label>
                   <Form.Control
-                    type="password"
+                    type={toggle ? "password" : "text"}
                     placeholder="Enter password"
                     value={password}
                     name="password"
                     onChange={handleChange}
                     autoComplete="false"
                   />
+                  <div className="d-flex">
+                  <p style={{cursor: "pointer"}} className="mt-3 ml-1" onClick={togglePass}>{toggleShow === false ? "Hide" : "Show"} password</p>
+                  </div>
+
+                  
                   <Button
                     type="submit"
                     variant="success"

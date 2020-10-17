@@ -11,7 +11,8 @@ const initInputs = {
 const Wrapper = styled.div`
   .btn-secondary {
     background: #a696c8;
-    border: none
+    border: none;
+    display: inline-block
   }
 
   h1{
@@ -37,6 +38,24 @@ export default function ProfileForm(props) {
     e.preventDefault()
     addNote(inputs)
     setInputs(initInputs)
+  }
+
+  function plusBtn(){
+    return (
+      <svg
+        width="2em"
+        height="2em"
+        viewBox="0 0 16 16"
+        class="bi bi-plus"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+        />
+      </svg>
+    );
   }
 
   const {title, note, img} = inputs
@@ -74,8 +93,8 @@ export default function ProfileForm(props) {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Button type="submit" variant="secondary" size="xl" className="w-50">
-              Add Note
+            <Button type="submit" variant="secondary" size="xl" >
+              {plusBtn()}
             </Button>
           </Form>
         </div>

@@ -51,4 +51,4 @@ app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`)
 })
 
-console.log(PORT)
+// console.log(PORT)

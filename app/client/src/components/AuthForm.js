@@ -163,9 +163,9 @@ const AuthForm = (props) => {
                   </h6>
                 </div>
                 <p className="splash-text">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quaerat quam enim rerum necessitatibus quos, vitae cupiditate
-                  dolorum quibusdam animi excepturi.
+                  A simple and liteweight mobile note taking app for people on the go. Created by Jared 
+                  Manwaring using MongoDB, NODE, and Express on the server side and the React framework on the 
+                  client side.
                 </p>
                 {/* <p>{pass}</p> */}
                 <Button variant="flat" className="w-50 mt-1 mb-4">

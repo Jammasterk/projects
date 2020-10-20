@@ -1,3 +1,2 @@
-# no modules
-node_modules
-.env
+#untracked files
+*.env

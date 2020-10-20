@@ -39,6 +39,10 @@ const contactSchema = new Schema({
         type: String,
         required: false
     },
+    birthday: {
+        type:String,
+        required: false
+    },
     user:{
         type: Schema.Types.ObjectId,
         ref: "User",

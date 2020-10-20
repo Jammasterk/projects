@@ -36,7 +36,7 @@ export default function ContactForm(props) {
         e.preventDefault(setState(!state))
       }
 
-      const {firstName, lastName, phone, email, twitter, facebook, instagram, img} = inputs
+      const {firstName, lastName, phone, email, twitter, facebook, instagram, img, birthday} = inputs
 
     return (
       <div>
@@ -47,58 +47,75 @@ export default function ContactForm(props) {
                 <MDBJumbotron>
                   <h1>Save a contact</h1>
                   <form onSubmit={handleSubmit}>
-                    <MDBInput 
-                    type="text"
-                    name="firstName"
-                    value={firstName}
-                    onChange={handleChange}
-                    label="First name" />
                     <MDBInput
-                    type="text"
-                    name="lastName"
-                    value={lastName}
-                    onChange={handleChange}
-                     label="Last name" />
+                      className="w-100"
+                      type="text"
+                      name="firstName"
+                      value={firstName}
+                      onChange={handleChange}
+                      label="First name"
+                    />
                     <MDBInput
-                    type="text"
-                    name="phone"
-                    value={phone}
-                    onChange={handleChange}
-                     label="Phone" />
+                      className="w-100"
+                      type="text"
+                      name="lastName"
+                      value={lastName}
+                      onChange={handleChange}
+                      label="Last name"
+                    />
+
+                    <MDBInput
+                      type="tel"
+                      name="phone"
+                      value={phone}
+                      onChange={handleChange}
+                      label="Tel: 123-456-7890"
+                      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    />
                     <div
                       style={state ? { display: "block" } : { display: "none" }}
                     >
-                      <MDBInput type="date" label="Birthday" />
                       <MDBInput
-                      type="text"
-                      name="email"
-                      value={email}
-                      onChange={handleChange}
-                       label="Email" />
+                        type="date"
+                        label="Birthday"
+                        onChange={handleChange}
+                        value={birthday}
+                        name="birthday"
+                      />
                       <MDBInput
-                      type="text"
-                      name="twitter"
-                      value={twitter}
-                      onChange={handleChange}
-                       label="Twitter" />
+                        type="text"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                        label="Email"
+                      />
                       <MDBInput
-                      type="text"
-                      name="instagram"
-                      value={instagram}
-                      onChange={handleChange}
-                       label="Instagram" />
+                        type="text"
+                        name="twitter"
+                        value={twitter}
+                        onChange={handleChange}
+                        label="Twitter"
+                      />
                       <MDBInput
-                      type="text"
-                      name="facebook"
-                      value={facebook}
-                      onChange={handleChange}
-                       label="Facebook" />
-                      <MDBInput 
-                      type="file"
-                      name="img"
-                      value={img}
-                      onChange={handleChange}
-                       />
+                        type="text"
+                        name="instagram"
+                        value={instagram}
+                        onChange={handleChange}
+                        label="Instagram"
+                      />
+                      <MDBInput
+                        type="text"
+                        name="facebook"
+                        value={facebook}
+                        onChange={handleChange}
+                        label="Facebook"
+                      />
+                      {/* <MDBInput
+                        type="file"
+                        name="img"
+                        value={img}
+                        onChange={handleChange}
+                      /> */}
                     </div>
                     <MDBBadge
                       className="px-3"
@@ -107,12 +124,17 @@ export default function ContactForm(props) {
                       pill
                       color="mdb-color"
                     >
-                      <small>{state ? "less" : 'more'} options</small>
-                      
+                      <small>{state ? "less" : "more"} options</small>
                     </MDBBadge>
 
                     <br />
-                    <MDBBtn type="submit" outline className="mt-3" color="mdb-color" rounded>
+                    <MDBBtn
+                      type="submit"
+                      outline
+                      className="mt-3"
+                      color="mdb-color"
+                      rounded
+                    >
                       {props.btnText}
                     </MDBBtn>
                   </form>

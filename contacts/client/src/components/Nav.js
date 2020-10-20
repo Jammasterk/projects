@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDoorClosed} from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap");
+
   ul {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin: auto;
-    height: 45px;
+    height: 60px;
     background-color: #40514e;
     list-style: none;
     padding-top: 0.5em;
@@ -17,13 +19,14 @@ const Wrapper = styled.div`
 
   .nav {
     background: #40514e;
-    filter: blur(.5px)
+    filter: blur(0.5px);
   }
 
   li {
     color: white;
-    /* margin: 0 100%; */
-    display: inline-block
+    font-size: 30px;
+    display: inline-block;
+    font-family: "Source Code Pro", monospace;
   }
 `;
 
@@ -36,7 +39,7 @@ const Nav = (props) => {
       <Wrapper>
         <div className="nav">
           <ul>
-            <li>Birdy</li>
+            <li>Birdy App</li>
             {token && (
                 <li onClick={logout}>
                     <FontAwesomeIcon icon={faDoorClosed}/>

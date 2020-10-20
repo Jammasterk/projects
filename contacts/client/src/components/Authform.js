@@ -34,8 +34,8 @@ const Wrapper = styled.div`
     margin: 2em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #212529;
-    width: 30%;
-    font-size: 3.2vh;
+    width: 60%;
+    font-size: 4.2vh;
     font-weight: bold
   }
 
@@ -53,6 +53,11 @@ const Wrapper = styled.div`
 
   img {
     width: 100% !important;
+  }
+
+  .toggle{
+    width: 45px;
+    margin-bottom: .5em
   }
 `;
 
@@ -73,9 +78,13 @@ const toggleVisibility =() => {
   setShow(!show)
 }
 
+const contact = () => {
+  return <i class="far fa-address-book"></i>;
+}
+
     return (
       <Wrapper>
-        <h1>Birdy App</h1>
+        <h1>📓 Contacts Manager</h1>
         <div className="wrapper">
           <img src={SocialMedia} alt="" className="w-50 mr-5" />
 
@@ -102,16 +111,15 @@ const toggleVisibility =() => {
               />
               <div className="d-flex">
                 <input onClick={toggleVisibility} type="checkbox" />
-                <div className="ml-2 mr-2 d-flex w-25 justify-content-around">
+                <div className=" d-flex justify-content-around toggle">
                   {show === false ? (
                     <i className="fas fa-eye"></i>
                   ) : (
                     <i className="fas fa-eye-slash"></i>
                   )}
-                  <p>password</p>
                 </div>
               </div>
-              <MDBBtn type="submit" outline color="blue-grey" className="w-50">
+              <MDBBtn type="submit" outline color="blue-grey" className="w-75">
                 {btnText}
               </MDBBtn>
               <p style={{ color: "red" }}>{errMsg}</p>

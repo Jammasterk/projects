@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBBadge, MDBBtn } from "mdbreact";
 import styled from "styled-components"
 import ContactForm from "./ContactForm"
 import randomColor from "randomcolor"
+import {UserContext} from "../context/UserProvider"
 
 const Wrapper = styled.div`
   .socials {
@@ -60,11 +61,17 @@ const Wrapper = styled.div`
 
 export default function Contact(props) {
 
-    const {firstName, lastName, phone, email, twitter, facebook, instagram, _id} = props
+    const {firstName, lastName, phone, email, twitter, facebook, instagram, _id, birthday} = props
     const [editToggle, setEditToggle] = useState(true)
+    const [search, setSearch] = useState('')
+    // const [filteredContact, setFilteredContact] = useState([])
 
-    console.log(randomColor)
+    const {contacts} = useContext(UserContext)
 
+    // console.log(randomColor)
+
+
+    console.log(contacts)
 
     return (
       <>
@@ -82,6 +89,7 @@ export default function Contact(props) {
                           {firstName} {lastName}
                         </h3>
                         <p>{phone}</p>
+                        <p>🎂 {birthday}</p>
                         {/* <p>Birthday: 04/28/1989</p> */}
                         <div className="actionLinks">
                           <a href={`tel:${phone}`}>

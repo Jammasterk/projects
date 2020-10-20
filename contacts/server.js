@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/contact-authentication",
+  process.env.MONGODB_URI || " mongodb://localhost:27017/contact-authentication",
   {
     useNewUrlParser: true,
     useCreateIndex: true,

@@ -1,68 +1,42 @@
 import React, {useState} from 'react'
 import { MDBJumbotron, MDBBtn, MDBBadge, MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
-import styled from "styled-components"
 
-const Wrapper = styled.div`
-    svg, path{
-        width: 32px
-    }
-    small{
-        width: 100vw
-    }
-`
 
-export default function ContactForm() {
+export default function ContactForm(props) {
 
-    const [state, setState] = useState(false)
+  const initInputs = {
+    firstName: props.firstName || "",
+    lastName: props.lastName || "",
+    phone: props.phone || "",
+    email: props.email || "",
+    twitter: props.twitter || "",
+    facebook: props.facebook || "",
+    instagram: props.instagram || "",
+    img: props.img || ""
+  }
+
+  const [inputs, setInputs] = useState(initInputs)
+  const [state, setState] = useState(false)
+
+  function handleChange(e){
+    const {name, value} = e.target
+    setInputs(prevInputs => ({
+      ...prevInputs,
+      [name]: value
+    }))
+  }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    props.submit(inputs, props._id)
+    setInputs(initInputs)
+  }
 
     function toggleChange(e){
-        e.preventDefault(setState(!state))}
+        e.preventDefault(setState(!state))
+      }
 
-        function addIcon(){
-            return (
-              <Wrapper>
-                <svg
-                  width="2em"
-                  height="2em"
-                  viewBox="0 0 16 16"
-                  class="bi bi-plus-circle"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                  />
-                </svg>
-              </Wrapper>
-            );
-        }
-
-        function subIcon(){
-            return (
-              <svg
-                width="2em"
-                height="2em"
-                viewBox="0 0 16 16"
-                class="bi bi-dash-circle"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
-                />
-              </svg>
-            );
-        }
+      const {firstName, lastName, phone, email, twitter, facebook, instagram, img} = inputs
 
     return (
       <div>
@@ -72,19 +46,59 @@ export default function ContactForm() {
               <MDBCol>
                 <MDBJumbotron>
                   <h1>Save a contact</h1>
-                  <form action="">
-                    <MDBInput label="First name" />
-                    <MDBInput label="Last name" />
-                    <MDBInput label="Phone" />
+                  <form onSubmit={handleSubmit}>
+                    <MDBInput 
+                    type="text"
+                    name="firstName"
+                    value={firstName}
+                    onChange={handleChange}
+                    label="First name" />
+                    <MDBInput
+                    type="text"
+                    name="lastName"
+                    value={lastName}
+                    onChange={handleChange}
+                     label="Last name" />
+                    <MDBInput
+                    type="text"
+                    name="phone"
+                    value={phone}
+                    onChange={handleChange}
+                     label="Phone" />
                     <div
                       style={state ? { display: "block" } : { display: "none" }}
                     >
                       <MDBInput type="date" label="Birthday" />
-                      <MDBInput label="Email" />
-                      <MDBInput label="Twitter" />
-                      <MDBInput label="Instagram" />
-                      <MDBInput label="Facebook" />
-                      <MDBInput type="file" />
+                      <MDBInput
+                      type="text"
+                      name="email"
+                      value={email}
+                      onChange={handleChange}
+                       label="Email" />
+                      <MDBInput
+                      type="text"
+                      name="twitter"
+                      value={twitter}
+                      onChange={handleChange}
+                       label="Twitter" />
+                      <MDBInput
+                      type="text"
+                      name="instagram"
+                      value={instagram}
+                      onChange={handleChange}
+                       label="Instagram" />
+                      <MDBInput
+                      type="text"
+                      name="facebook"
+                      value={facebook}
+                      onChange={handleChange}
+                       label="Facebook" />
+                      <MDBInput 
+                      type="file"
+                      name="img"
+                      value={img}
+                      onChange={handleChange}
+                       />
                     </div>
                     <MDBBadge
                       className="px-3"
@@ -98,8 +112,8 @@ export default function ContactForm() {
                     </MDBBadge>
 
                     <br />
-                    <MDBBtn outline className="mt-3" color="mdb-color" rounded>
-                      Add contact
+                    <MDBBtn type="submit" outline className="mt-3" color="mdb-color" rounded>
+                      {props.btnText}
                     </MDBBtn>
                   </form>
                 </MDBJumbotron>

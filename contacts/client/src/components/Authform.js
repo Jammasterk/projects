@@ -1,8 +1,8 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {MDBInput, MDBBtn} from "mdbreact"
 import SocialMedia from "../assets/social.png";
 import styled from "styled-components"
-import Auth from "./Auth"
+
 
 
 const Wrapper = styled.div`
@@ -62,7 +62,7 @@ export default function Authform(props) {
 
   const [show, setShow] = React.useState(false)
 
-  const {handleChange, handleSubmit, btnText, errMsg, toggleForm, inputs: {
+  const {handleChange, handleSubmit, btnText, errMsg, inputs: {
     username,
     password
   },
@@ -82,43 +82,41 @@ const toggleVisibility =() => {
           <form onSubmit={handleSubmit}>
             <h4>Signup / Login</h4>
             <div className="inner-inputs">
-              <MDBInput 
-                  className="inputs" 
-                  label="email / username"
-                  value={username}
-                  name="username"
-                  onChange={handleChange}
-                  autoComplete="off"
+              <MDBInput
+                className="inputs"
+                label="email / username"
+                value={username}
+                name="username"
+                onChange={handleChange}
+                autoComplete="off"
+              />
 
-                />
-              
-                <MDBInput
-                  type={show === false ? "password" : "text"}
-                  className="inputs"
-                  label="password"
-                  value={password}
-                  name="password"
-                  onChange={handleChange}
-
-                />
-                <div className="d-flex">
-                  <input onClick={toggleVisibility} type="checkbox" />
-                  <div className="ml-2 mr-2 d-flex w-25 justify-content-around">
-                    {show === false ? (
-                      <i className="fas fa-eye"></i>
-                    ) : (
-                      <i className="fas fa-eye-slash"></i>
-                    )}
-                    <p>password</p>
-                  </div>
+              <MDBInput
+                type={show === false ? "password" : "text"}
+                className="inputs"
+                label="password"
+                value={password}
+                name="password"
+                onChange={handleChange}
+                /* pattern=".{8,}" */
+              />
+              <div className="d-flex">
+                <input onClick={toggleVisibility} type="checkbox" />
+                <div className="ml-2 mr-2 d-flex w-25 justify-content-around">
+                  {show === false ? (
+                    <i className="fas fa-eye"></i>
+                  ) : (
+                    <i className="fas fa-eye-slash"></i>
+                  )}
+                  <p>password</p>
+                </div>
               </div>
               <MDBBtn type="submit" outline color="blue-grey" className="w-50">
                 {btnText}
               </MDBBtn>
-              <p style={{color: "red"}}>{errMsg}</p>
+              <p style={{ color: "red" }}>{errMsg}</p>
             </div>
           </form>
-            
         </div>
       </Wrapper>
     );

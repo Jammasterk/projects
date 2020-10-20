@@ -50,7 +50,24 @@ contactRouter.delete("/:contactId", (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            return res.status(200).send(`Successfully deleted contact`)
+            return res.status(200).send(`Successfully deleted ${deleteContact.firstName}`)
+        }
+    )
+})
+
+// Update Contact
+
+contactRouter.put("/:contactId", (req, res, next) => {
+    Contact.findOneAndUpdate(
+        {_id: req.params.contactId, user: req.user._id},
+        req.body,
+        {new: true},
+        (err, updateContact) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(updateContact)
         }
     )
 })

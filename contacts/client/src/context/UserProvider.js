@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import axios from "axios"
 
 export const UserContext = React.createContext()
@@ -16,6 +16,7 @@ export default function UserProvider(props){
     const initState = {
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || "",
+        contacts: [],
         errMsg: ''
     }
 
@@ -51,6 +52,7 @@ export default function UserProvider(props){
           const { user, token } = res.data;
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
+          getUserContacts()
           setUserState((prevUserState) => ({
             ...prevUserState,
             user,
@@ -66,8 +68,9 @@ export default function UserProvider(props){
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       setUserState({
-        user: [],
-        token: ""
+        user: {},
+        token: "",
+        contacts: []
       });
     }
 
@@ -88,6 +91,61 @@ export default function UserProvider(props){
         errMsg: "",
       }));
     }
+
+    // get user contacts
+
+    function getUserContacts(){
+      userAxios.get('/api/contacts/user')
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          contacts: res.data
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    // add contacts
+
+    function addContact(newContact){
+      userAxios.post('/api/contacts', newContact)
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          contacts: [...prevState.contacts, res.data]
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    // Update Contact
+
+    function updateContact(updates, contactId){
+      userAxios.put(`/api/contacts/${contactId}`, updates)
+      .then(res => {
+        console.log(res)
+        setUserState(prevState => ({
+          ...prevState,
+          contacts: prevState.contacts.map(contact => contact._id !== contactId ? contact : res.data)
+        }))
+      })
+      .catch(err => console.log(err))
+    }
+
+    function deleteContact(contactId){
+      userAxios.delete(`/api/contacts/${contactId}`)
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          contacts: prevState.contacts.filter(contact => contact._id !== contactId)
+        }))
+      })
+    }
+
+    useEffect(() => {
+      getUserContacts()
+    }, [])
+
     return(
         <UserContext.Provider
             value={{
@@ -95,6 +153,9 @@ export default function UserProvider(props){
                 login,
                 signup,
                 logout,
+                addContact,
+                updateContact,
+                deleteContact,
                 resetAuthErr
             }}
         >

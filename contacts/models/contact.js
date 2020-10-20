@@ -8,36 +8,41 @@ const contactSchema = new Schema({
     },
     lastName:{
         type: String,
-        required: true
+        required: false
     },
     phone: {
         type: String,
         required: true,
-        unique: true
+        
     },
     email:{
         type: String,
         required: false,
-        unique: true
+        
     },
     twitter:{
         type: String,
         required: false,
-        unique: true
+        
     },
     facebook:{
         type: String,
         required: false,
-        unique: true
+        
     },
     instagram: {
         type: String,
         required: false,
-        unique: true
+        
     },
     img:{
         type: String,
         required: false
+    },
+    user:{
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 })
 

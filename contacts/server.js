@@ -27,6 +27,14 @@ app.use(
 );
 app.use("/api/contacts", require("./routes/contactRouter"))
 
+app.use((err, req, res, next) => {
+    console.log(err)
+    if(err.name === "UnauthorizedError"){
+        res.status(err.status)
+    }
+    return res.send({errMsg: err.message})
+})
+
 app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`)
 })

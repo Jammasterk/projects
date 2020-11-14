@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
     const Container = styled.div`
+  margin-top: 30%;
+
       h2 {
         color: #000;
       }
@@ -57,10 +59,6 @@ import styled from "styled-components"
 
       audio:focus {
         outline: none;
-      }
-
-      .outer-container {
-        margin-top: 15em;
       }
 
       @media only screen and (max-width: 490px) {

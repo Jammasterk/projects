@@ -1,24 +1,23 @@
 import React from 'react'
-import Splash from "./components/Splash"
+import Me from "./components/Me"
 import Projects from "./components/Projects"
-import Contact from "./components/Contact"
+import You from "./components/You"
 import {Switch, Route} from "react-router-dom"
 
 export default function App() {
-
     return (
-        <div>
-           <Switch>
-               <Route exact path="/">
-                <Splash />
-               </Route>
-               <Route path="/projects">
-                <Projects />   
+        <>
+        <Switch>
+            <Route exact path="/">
+                <Me />
             </Route>
-            <Route path="/contact">
-                <Contact />
+            <Route path="/projects">
+                <Projects/>
             </Route>
-           </Switch>
-        </div>
+            <Route path="/you">
+                <You/>
+            </Route>
+        </Switch>
+        </>
     )
 }

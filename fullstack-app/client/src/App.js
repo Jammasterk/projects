@@ -1,17 +1,12 @@
 import React from 'react'
-import Authform from "./components/Authform"
-import Game from "./components/Game"
-import Message from "./components/Message"
-import Account from "./components/Account"
+import Auth from "./components/Auth"
 import "./index.css"
 
 export default function App() {
     return (
         <div>
-           <Authform /> 
-           <Game />
-           <Message />
-           <Account />
+           <Auth /> 
+        
         </div>
     )
 }

@@ -54,7 +54,7 @@ const getTrack = async () => {
       {
         method: "GET",
         headers: {
-          app_id: process.env.REACT_APP_DEEZER_KEY,
+          app_id: "503a4079441e995b33cccb7804e0d316",
           limit: 50,
         },
       }

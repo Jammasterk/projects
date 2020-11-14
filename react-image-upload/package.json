@@ -1,0 +1,19 @@
+{
+  "name": "react-image-upload",
+  "version": "1.0.0",
+  "description": "an image upload using react express and multer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "projects"
+  },
+  "author": "jared manwaring",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0"
+  }
+}

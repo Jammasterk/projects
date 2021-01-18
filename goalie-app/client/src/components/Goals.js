@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     margin-right: auto;
     margin-top: 2.3em;
     width: 80%;
-    height: 90%;
+    height: 650px;
   }
 
   h1,
@@ -68,7 +68,7 @@ const Wrapper = styled.div`
   }
 
   .submit {
-    width: 40%;
+    width: 150px;
     height: 40px;
     border-radius: 25px;
     border: none;
@@ -80,6 +80,7 @@ const Wrapper = styled.div`
 
   .inner-form {
     padding: 2em;
+    height: 50%;
   }
 
   .reminder-flex {
@@ -180,7 +181,7 @@ export default function Goals() {
                 <br />
                 <input className="fields" type="text" name="" id="" />
                 <label htmlFor="">Description / Requirements</label>
-                <input className="fields" type="text" />
+                <textarea className="fields" type="text" />
                 <br />
                 <label htmlFor="">Due Date</label>
                 <br />

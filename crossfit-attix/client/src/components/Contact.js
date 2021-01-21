@@ -58,6 +58,10 @@ const Wrapper = styled.div`
     height: 100vh
   }
 
+  .align{
+    text-align: start
+  }
+
   @media only screen and (max-width: 1020px) {
    .locations{
        display: block;
@@ -122,13 +126,13 @@ function Map() {
             >
               <div>
 
-                <p style={{color: "#333634"}}>{selectedLocation.address}</p>
-                <p style={{color: "#333634"}}>
+                <p className="align" style={{color: "#333634"}}>{selectedLocation.address}</p>
+                <p className="align" style={{color: "#333634"}}>
                   {selectedLocation.city}. {selectedLocation.zip}
                 </p>
                 
-                <p style={{color: "#333634"}}>720-555-5555</p>
-                <a href={selectedLocation.direction}>Directions</a>
+                <p className="align" style={{color: "#333634"}}>720-555-5555</p>
+                <a className="align" href={selectedLocation.direction}>Directions</a>
               </div>
             </InfoWindow>
           )}

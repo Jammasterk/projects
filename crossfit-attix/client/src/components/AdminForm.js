@@ -12,8 +12,13 @@ const AdminForm =  (props) => {
     } = props
 
     return(
-       <div>
-           
-       </div>
+       <form onSubmit={handleSubmit}>
+           <input type="text" value={username} name="username" onChange={handleChange} />
+           <input type="password" value={password} name="password" onChange={handleChange}/>
+           <button>{btnText}</button>
+           <p>{errMsg}</p>
+       </form>
     )
 }
+
+export default AdminForm

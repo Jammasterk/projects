@@ -7,12 +7,14 @@ import Membership from "./components/Membership"
 import WOD from "./components/WOD"
 import Contact from "./components/Contact"
 import Nav from "./components/Nav"
+import Admin from "./components/Admin"
 
 export default function App() {
     return (
         <div>
+            <Admin />
            {/* <Nav /> */}
-           <Switch>
+           {/* <Switch>
                <Route exact path="/">
                 <Homepage/>
                </Route>
@@ -31,7 +33,7 @@ export default function App() {
                 <Route path="/contact">
                     <Contact />
                 </Route>
-           </Switch>
+           </Switch> */}
         </div>
     )
 }

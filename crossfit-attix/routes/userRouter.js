@@ -48,21 +48,23 @@ userRouter.post("/login", (req, res, next) => {
            const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
            return res.status(200).send({token, user: user.withoutPassword()})
        })
-       userRouter.put("/:userId", (req, res, next) => {
-           User.findOneAndUpdate(
-               {_id: req.params.userId, user: req.user._id},
-               req.body,
-               {new: true},
-               (err, updatePassword) => {
-                   if(err){
-                    res.status(500)
-                    return next(err)
-                   }
-                   return res.status(201).send(updatePassword)
-               }
-           )
-       })
+       
    })
+})
+
+userRouter.put("/:userId", (req, res, next) => {
+    User.findOneAndUpdate(
+        {_id: req.params.userId, user: req.user._id},
+        req.body,
+        {new: true},
+        (err, updatePassword) => {
+            if(err){
+             res.status(500)
+             return next(err)
+            }
+            return res.status(201).send(updatePassword)
+        }
+    )
 })
 
 module.exports = userRouter

@@ -24,6 +24,7 @@ app.use(
     "/api",
     expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] })
   );
+  app.use('/api/wod', require('./routes/wodRouter'))
 
 app.use((err, req, res, next)=>{
     console.log(err)

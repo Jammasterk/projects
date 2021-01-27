@@ -1,45 +1,57 @@
 const express= require('express')
 const taskRouter = express.Router()
-const { v4: uuidv4 } = require("uuid");
+const Task = require('../models/task')
 
-const tasks = [
-  {
-    todo: "Start Scrum board project",
-    _id: uuidv4(),
-  },
-];
+// get all
 
-taskRouter.get("/:taskId", (req, res) => {
-  const taskId = req.params.taskId
-  const foundTask = tasks.find(task => task._id === taskId)
-  res.send(foundTask)
+taskRouter.get("/", (req, res, next) => {
+  Task.find((err, tasks) => {
+      if(err){
+        res.status(500)
+        return next(err)
+      }
+      return res.status(200).send(tasks)
+  })
 })
 
 taskRouter.get("/", (req, res) => {
   res.send(tasks);
 });
 
-taskRouter.post("/", (req, res) => {
-  const newTask = req.body;
-  newTask._id = uuidv4()
-  tasks.push(newTask);
-  res.send(newTask);
+taskRouter.post("/", (req, res, next) => {
+  const newTask = new Task(req.body)
+  newTask.save((err, savedTask) => {
+    if(err){
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(savedTask)
+  })
 });
 
-taskRouter.delete("/:taskId", (req, res) => {
-  const taskId = req.params.taskId
-  const taskIndex = tasks.findIndex(task => task._id === taskId)
-  tasks.splice(taskIndex,1 )
-  res.send(`Successfully removed ${taskIndex.todo} from database`)
+taskRouter.put("/:taskId", (req, res, next) => {
+  Task.findOneAndUpdate(
+    { _id: req.params.taskId },
+    req.body,
+    { new: true },
+    (err, updatedTask) => {
+      if (err) {
+        res.status(500);
+        return next(err);
+      }
+      return res.status(200).send(updatedTask);
+    }
+  );
+});
 
-})
-
-taskRouter.put('/:taskId', (req, res) => {
-  const taskId = req.params.taskId
-  const updateObject = req.body
-  const taskIndex = tasks.findIndex(task => task._id === taskId)
-  const updatedTask = Object.assign(tasks[taskIndex], updateObject)
-  res.send(updatedTask)
+taskRouter.delete("/:taskId", (req, res, next) => {
+  Task.findOneAndDelete({_id: req.params.taskId},(err, deletedTask) => {
+    if(err){
+      res.status(500)
+      return next(err)
+    }
+    return res.status(200).send(`Successfully deleted ${deletedTask.todo}`)
+  })
 })
 
 module.exports = taskRouter

@@ -1,6 +1,6 @@
-import React from "react"
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
+import { FaTrashAlt, FaEdit, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Wrapper = styled.div`
   .container {
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   p {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
-    font-size: 12px
+    font-size: 12px;
   }
 
   small {
@@ -37,6 +37,21 @@ const Wrapper = styled.div`
     color: #f85959;
   }
 
+  .twitter {
+    color: #1da1f2;
+    margin: 0 .15em
+  }
+
+  .linkedIn {
+    color: #0077b5;
+    margin: 0 .15em
+  }
+
+  .github {
+    color: #333333;
+    margin: 0 .15em
+  }
+
   button {
     border: none;
     background: none;
@@ -47,17 +62,27 @@ const Wrapper = styled.div`
   }
 `;
 
-const Description = (props) => {
-    const {created, description, assignedTo, due, teamLead, _id} = props
+const User = (props) => {
+    const {name, company, role, bio, twitter, linkedIn, github, _id} = props
+
     return (
       <Wrapper>
         <div className="container">
-          <h6>Task description: {description}</h6>
-          <small> Date created: {created}</small>
-          <p>Assigned to: {assignedTo}</p>
-          <p>Due date: {due}</p>
-          <p>Team leader: {teamLead}</p>
-          <button onClick={() => props.deleteDescription(_id)}>
+          <h6>Name: {name}</h6>
+          <p>Company: {company}</p>
+          <p>Role: {role}</p>
+          <p>Bio: {bio}</p>
+          <a href={twitter}>
+            <FaTwitter className="twitter" />
+          </a>
+          <a href={linkedIn}>
+            <FaLinkedin className="linkedIn" />
+          </a>
+          <a href={github}>
+            <FaGithub className="github" />
+          </a>
+          <br/>
+          <button onClick={() => props.deleteUser(_id)}>
             <FaTrashAlt />
           </button>
           <button>
@@ -68,4 +93,4 @@ const Description = (props) => {
     );
 }
 
-export default Description
+export default User

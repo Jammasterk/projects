@@ -4,9 +4,15 @@ import Task from "./components/Task"
 import AddTaskForm from "./components/AddTaskForm"
 import AddDescriptionForm from "./components/AddDescriptionForm"
 import Description from "./components/Description"
+import AddUserForm from "./components/AddUserForm"
+import User from "./components/User"
 
 const App = () => {
     const [tasks, setTasks] = useState([])
+    const [descriptions, setDescriptions] = useState([])
+    const [users, setUsers] = useState([])
+
+    // Tasks
 
     function getTasks(){
         
@@ -34,9 +40,71 @@ const App = () => {
        .catch(err => console.log(err))
    }
 
+   //Descriptions
+
+   function getDescriptions(){
+       axios.get("/description")
+       .then(res => setDescriptions(res.data))
+       .catch(err => console.log(err))
+   }
+
+   function addDescriptions(newDescription){
+       axios.post("/description", newDescription)
+       .then(res => setDescriptions(prevDescription => [...prevDescription, res.data]))
+       .catch(err => console.log(err))
+   }
+
+   function deleteDescriptions( descriptionId){
+       axios.delete(`/description/${descriptionId}`)
+       .then(res => console.log(res))
+       .catch(err => console.log(err))
+   }
+
+   function updateDescription(descriptionId){
+       axios.put(`/description/${descriptionId}`)
+       .then(res => console.log(res))
+       .catch(err => console.log(Error))
+
+   }
+
+   // Users
+
+   function getUsers(){
+       axios.get('/user')
+       .then(res => setUsers(res.data))
+       .catch(err => console.log(err))
+   }
+
+   function addUser(newUser){
+       axios.post('/user', newUser)
+       .then(res => setUsers(prevUser => [...prevUser, res.data]))
+       .catch(err => console.log(err))
+   }
+
+   function deleteUser(userId){
+       axios.delete(`/user/${userId}`)
+       .then(res => console.log(res))
+        .catch(err => console.log(err))
+   }
+
+   function updateUser(userId){
+       axios.put(`/user/${userId}`)
+       .then(res => console.log(res))
+       .catch(err => console.log(err))
+   }
+
     useEffect(() => {
         getTasks()
     }, [])
+
+    useEffect(() => {
+        getDescriptions()
+    }, [])
+
+    useEffect(() => {
+        getUsers()
+    }, [])
+
     return(
         <>
         <div>
@@ -49,13 +117,22 @@ const App = () => {
             {tasks.map(task => <Task {...task} key={task.todo} deleteTask={deleteTask}/>)}
              
         </div>
-        {/* <div>
+        <div>
             <AddDescriptionForm
-                addDescription={addDescription}
-                deleteDescription={deleteDescription}
-                updateDesckriop
+                addDescriptions={addDescriptions}
+                deleteDescriptions={deleteDescriptions}
+                updateDescription={updateDescription}
              />
-        </div> */}
+             {descriptions.map(description => <Description {...description} key={description.description} deleteDescription={deleteDescriptions}/>)}
+        </div>
+        <div>
+            <AddUserForm
+                addUser={addUser}
+                deleteUser={deleteUser}
+                updateUser={updateUser}
+             />
+             {users.map(user => <User {...user} key={user.name} deleteUser={deleteUser}/>)}
+        </div>
         </>
     )
 }

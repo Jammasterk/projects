@@ -1,44 +1,67 @@
-const express = require('express')
+const express = require("express")
 const userRouter = express.Router()
-const { v4: uuidv4 } = require("uuid");
+const User = require('../models/user')
 
-const users = [
-    {name: "Jared", company: "Google", role: "Admin", bio: "lorem ipsum dolet set", twitter: "twitter", linkedIn: "linkedIn", github: "github", _id: uuidv4()}
-]
-
-
-// Find all user
-userRouter.get("/", (req, res) => {
-    res.send(users)
-})
-
-//Find info by user
-userRouter.get("/:userId", (req, res) => {
-    const userId = req.params.userId
-    const foundUser = users.find(user => user._id === userId)
-    res.send(foundUser)
-})
-
-// find user by company
-    userRouter.get("/search/company", (req, res) => {
-        const company = req.query.company
-        const filteredCompany = users.filter(user => user.company === company) 
-        res.send(filteredCompany)
+userRouter.get('/', (req, res, next) => {
+    User.find((err, users) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(users)
     })
-
-userRouter.post("/", (req, res,) => {
-    const newUser = req.body
-    users.push(newUser)
-    res.send(`Successfully add ${newUser.name} to database`)
 })
 
-userRouter.put("/:userId", (req, res) => {
-    const userId = req.params.userId
-    const updateObject = req.body
-    const userIndex = users.findIndex(user => user._id === userId)
-    const updateUser = Object.assign(users[userIndex], updateObject)
-    res.send(updateUser)
+userRouter.get('/', (req, res, next) => {
+    User.find({user: req.user._id}, (err, users) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(users)
+    })
 })
 
+userRouter.post('/', (req, res, next) => {
+    req.body.user = req.user._id;
+    const newUser = new User(req.body)
+    newUser.save((err, savedUser) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(savedUser)
+    })
+})
+
+userRouter.put("/:userId", (req, res, next) => {
+    User.findOneAndUpdate(
+      { _id: req.params.userId, user: req.user._id },
+      req.body,
+      { new: true },
+      (err, updateUser) => {
+        if (err) {
+          res.status(500);
+          return next(err);
+        }
+        return res.status(200).send(updateUser);
+      }
+    );
+})
+
+userRouter.delete("/:userId", (req, res, next) => {
+    User.findOneAndDelete(
+      { _id: req.params.userId, user: req.user._id },
+      (err, deleteUser) => {
+        if (err) {
+          res.status(500);
+          return next(err);
+        }
+        return res
+          .status(200)
+          .send(`Successfully deleted ${deleteUser.firstName}`);
+      }
+    );
+})
 
 module.exports = userRouter

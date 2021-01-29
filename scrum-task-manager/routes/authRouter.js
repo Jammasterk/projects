@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 authRouter.post('/signup', (req, res, next) => {
     User.findOne({username: req.body.username.toLowerCase}, (err, user) => {
         if(err){
-            res.status(500)
+            res.status(403)
             return next(err)
         }
         if(user){
@@ -16,7 +16,7 @@ authRouter.post('/signup', (req, res, next) => {
         const newUser = new User(req.body)
         newUser.save((err, savedUser) => {
             if(err){
-                res.status(500)
+                res.status(403)
                 return next(err)
             }
             const token = jwt.sign(savedUser.toObject(), process.env.SECRET)

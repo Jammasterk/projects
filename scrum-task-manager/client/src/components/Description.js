@@ -13,7 +13,9 @@ const Wrapper = styled.div`
     border-radius: 6px;
     background: #ffffff;
     box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-    margin-top: 2em;
+    margin-top: 100px;
+    margin-left: 20% !important;
+    position: fixed;
   }
   h6 {
     font-family: "Poppins", sans-serif;
@@ -24,7 +26,7 @@ const Wrapper = styled.div`
   p {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
-    font-size: 12px
+    font-size: 12px;
   }
 
   small {

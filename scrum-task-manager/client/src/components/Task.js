@@ -1,8 +1,10 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import styled from "styled-components"
 import {FaTrashAlt, FaEdit} from "react-icons/fa"
 import AddDescriptionForm from "./AddDescriptionForm"
 import Description from "./Description"
+import {UserContext} from "../context/UserProvider"
+import AddTaskForm from "./AddTaskForm"
 // import { format } from "date-fns";
 
 
@@ -18,7 +20,7 @@ const Wrapper = styled.div`
     border-radius: 6px;
     background: #ffffff;
     box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-    margin-top: 2em;
+    margin-top: 4em;
   }
   h1 {
     font-family: "Poppins", sans-serif;
@@ -48,13 +50,15 @@ const Wrapper = styled.div`
 
 const Task = (props) => {
 
+  
+
     // const dateTime = format(new Date(), "yyyy/MM/dd kk:mm:ss") ;
     console.log(props)
     const {todo, _id, date} = props
     return (
       <>
       <Wrapper>
-        <div className="container">
+        <div className="container"> 
           <h1>{todo}</h1>
           <small>Created on: {date}</small>
         </div>

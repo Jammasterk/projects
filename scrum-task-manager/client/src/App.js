@@ -7,13 +7,14 @@ import Auth from "./components/Auth"
 import Navbar from "./components/Navbar"
 import Profile from "./components/Profile"
 import {UserContext} from "./context/UserProvider"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 const App = () => {
     const {token, logout} = useContext(UserContext)
     return(
         <>
         <div>
-            <Navbar logout={logout}/>
+            {token && <Navbar logout={logout}/>}
             <Switch>
                 <Route
                     exact path="/"
@@ -21,14 +22,18 @@ const App = () => {
                  />
 
             
-                  <Route
+                  <ProtectedRoute
                     path="/profile"
-                    render={() => <Profile />}
+                   component={Profile}
+                   redirectTo="/"
+                   token={token}
                  />  
                 
-                <Route
+                <ProtectedRoute
                     path="/task"
-                    render={() => <Task />}
+                    component={Task}
+                    redirectTo="/"
+                    token={token}
                  />
             </Switch>
         </div>

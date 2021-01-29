@@ -106,6 +106,7 @@ function AuthForm(props) {
         handleChange,
         handleSubmit,
         btnText,
+        errMsg,
         inputs: {
             username,
             password
@@ -124,7 +125,7 @@ function AuthForm(props) {
             <h1>Scrumblr</h1>
             <p>Welcome to Scrumblr a kanban style collaboration tool</p>
             <input
-            className="input-fields"
+              className="input-fields"
               name="username"
               value={username}
               type="text"
@@ -132,7 +133,7 @@ function AuthForm(props) {
             />
             <br />
             <input
-            className="input-fields"
+              className="input-fields"
               type={show ? "text" : "password"}
               name="password"
               value={password}
@@ -141,9 +142,16 @@ function AuthForm(props) {
             <br />
             <div className="flex">
               <small>Show password:</small>
-              <input className="checkbox" type="checkbox" name="" id="" onClick={toggler}/>
+              <input
+                className="checkbox"
+                type="checkbox"
+                name=""
+                id=""
+                onClick={toggler}
+              />
             </div>
             <button>{btnText}</button>
+            <p style={{ color: "#cb3b3b", paddingTop: "24px", fontWeight: "400"}}>{errMsg}</p>
           </form>
         </div>
       </Wrapper>

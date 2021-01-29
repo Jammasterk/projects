@@ -33,7 +33,7 @@ export default function Auth() {
     const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
 
-    const {signup, login} = useContext(UserContext)
+    const {signup, login, errMsg, resetAuthErr} = useContext(UserContext)
 
     function handleChange(e){
         const {name, value} = e.target
@@ -53,6 +53,11 @@ export default function Auth() {
         login(inputs)
     }
 
+   function toggleForm(){
+     setToggle(prev => !prev)
+     resetAuthErr()
+   }
+    
     return (
       <Wrapper>
         <div style={{width: "100vw"}}>
@@ -63,8 +68,9 @@ export default function Auth() {
                 handleSubmit={handleSignup}
                 inputs={inputs}
                 btnText="Sign up"
+                errMsg={errMsg}
               />
-              <button className="submit-btn" onClick={() => setToggle((prev) => !prev)}>Already A Member? Login now!</button>
+              <button className="submit-btn" onClick={toggleForm}>Already A Member? Login now!</button>
             </>
           ) : (
             <>
@@ -73,8 +79,9 @@ export default function Auth() {
                 handleSubmit={handleLogin}
                 inputs={inputs}
                 btnText="Login"
+                errMsg={errMsg}
               />
-              <button className="submit-btn" onClick={() => setToggle((prev) => !prev)}>Not a member yet? Signup now!</button>
+              <button className="submit-btn" onClick={toggleForm}>Not a member yet? Signup now!</button>
             </>
           )}
         </div>

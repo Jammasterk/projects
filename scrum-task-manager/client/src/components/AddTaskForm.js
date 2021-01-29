@@ -46,7 +46,6 @@ const AddTaskForm = (props) => {
 
     function handleSubmit(e){
         e.preventDefault()
-        props.addTask(inputs)
         setInputs(initInputs)
         addTask(inputs)
         

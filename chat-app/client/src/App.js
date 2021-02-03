@@ -4,6 +4,7 @@ import Auth from "./components/Auth"
 import {Switch, Route, Redirect} from "react-router-dom"
 import Profile from "./components/Profile"
 import ProtectedRoute from "./components/ProtectedRoute"
+import Public from "./components/Public"
 import {UserContext} from "./context/UserProvider"
 import Navbar from "./components/Navbar"
 
@@ -16,14 +17,20 @@ function App(){
           <Route
             exact
             path="/"
-            render={() => (token ? <Redirect to="/profile" /> : <Auth /> )}
-           />
-           <ProtectedRoute
+            render={() => (token ? <Redirect to="/profile" /> : <Auth />)}
+          />
+          <ProtectedRoute
+            path="/public"
+            component={Public}
+            redirectTo="/"
+            token={token}
+          />
+          <ProtectedRoute
             path="/profile"
             component={Profile}
             redirectTo="/"
             token={token}
-            />
+          />
         </Switch>
       </>
     );

@@ -45,6 +45,7 @@ export default function UserProvider(props){
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
             getUserProduct()
+            getProduct()
             setUserState((prevUserState) => ({
               ...prevUserState,
               user,
@@ -79,13 +80,15 @@ export default function UserProvider(props){
     }
 
     function getProduct(){
-        userAxios.get('/api/product')
-        .then(res => {
-            setUserState(prevState => ({
-                ...prevState,
-                products: res.data
-            }))
-        })
+        userAxios
+          .get("/api/product")
+          .then((res) => {
+            setUserState((prevState) => ({
+              ...prevState,
+              products: res.data,
+            }));
+          })
+          .catch((err) => console.log(err.res.data.errMsg));
     }
 
     function getUserProduct(){

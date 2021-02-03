@@ -12,6 +12,9 @@ export default function Navbar(props) {
                    </Link> 
                 </li>
                 <li>
+                    <Link to="/public">Public</Link>
+                </li>
+                <li>
                     <a href="#" onClick={logout}>Logout</a>
                 </li>
             </ul>

@@ -4,7 +4,7 @@ const Product = require("../models/product")
 
 // Get all products
 
-productRouter.get('/', (req, res, next) => {
+productRouter.get('/all', (req, res, next) => {
    Product.find((err, products) => {
        if(err){
            res.status(500)
@@ -47,8 +47,21 @@ productRouter.put("/:productId", (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(`Successfully updated ${updateProduct. title}`)
+        return res.status(200).send(`Successfully updated ${updateProduct.title}`)
     })
+})
+
+productRouter.delete('/:productId', (req, res, next) => {
+    Product.findOneAndDelete(
+        {_id: req.params.productId, user: req.user._id},
+        (err, deleteProduct) => {
+            if(err){
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(`Successfully deleted ${deleteProduct.title}`)
+        }
+    )
 })
 
 module.exports = productRouter

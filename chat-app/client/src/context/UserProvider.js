@@ -81,7 +81,7 @@ export default function UserProvider(props){
 
     function getProduct(){
         userAxios
-          .get("/api/product")
+          .get("/api/product/all")
           .then((res) => {
             setUserState((prevState) => ({
               ...prevState,
@@ -125,14 +125,14 @@ export default function UserProvider(props){
     }
 
     function deleteProduct(productId){
-        userAxios.delete(`/api/post/${productId}`)
+        userAxios.delete(`/api/product/${productId}`)
         .then(res => {
             setUserState(prevState => ({
                 ...prevState,
                 products: prevState.products.filter(product => product._id !== productId)
             }))
         })
-        .catch(err => console.log(err))
+        .catch(console.log("Item is not yours to delete"))
     }
 
     return (

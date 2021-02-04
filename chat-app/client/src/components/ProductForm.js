@@ -60,7 +60,7 @@ function ProductForm(props) {
             <input
               id="product_name"
               type="text"
-              class="validate"
+              className="validate"
               name="title"
               value={title}
               onChange={handleChange}
@@ -71,7 +71,7 @@ function ProductForm(props) {
             <input
               id="description"
               type="text"
-              class="validate"
+              className="validate"
               name="subTitle"
               value={subTitle}
               onChange={handleChange}
@@ -82,7 +82,7 @@ function ProductForm(props) {
             <input
               id="price"
               type="text"
-              class="validate"
+              className="validate"
               name="price"
               value={price}
               onChange={handleChange}
@@ -111,27 +111,44 @@ function ProductForm(props) {
             <input
               id="image"
               type="text"
-              class="validate"
+              className="validate"
               name="image"
               value={image}
               onChange={handleChange}
             />
             <label for="image">Upload Image</label>
           </div>
-          <div class="input-field col s6">
+          <div className="input-field col s6">
             <input
               id="query"
               type="text"
-              class="validate"
+              className="validate"
               name="query"
               value={query}
               onChange={handleChange}
             />
             <label for="image">Add query</label>
           </div>
-          <button class="waves-effect waves-light btn">
-            Add Product
-          </button>
+          <select name="query" value={query} id="">
+            <option value="" disabled selected>Choose department</option>
+            <option value="CLothing And accessories">
+              Clothing and accessories
+            </option>
+            <option value="Books">Books</option>
+            <option value="Movies, Music & Games">Movies, Music & Games</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Computers">Computers</option>
+            <option value="Home and Garden">Home and garden</option>
+            <option value="Pet supplies">Pet supplies</option>
+            <option value="Food">Food</option>
+            <option value="Beauty and health">Beauty and health</option>
+            <option value="Toys, kids and baby">Toys, Kids, and Babies</option>
+            <option value="Handmade">Handmade</option>
+            <option value="Sports">Sports</option>
+            <option value="Outdoors">Outdoors</option>
+            <option value="Automotive">Automotive</option>
+          </select>
+          <button style={{marginTop: "1em"}} className="waves-effect waves-light btn">Add Product</button>
         </form>
       </Wrapper>
     );

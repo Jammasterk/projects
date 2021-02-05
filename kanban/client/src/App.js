@@ -1,10 +1,10 @@
 import React from 'react'
-import Board from "./components/Board"
+import Auth from "./components/Auth"
 
 function App() {
     return (
         <div>
-            <Board />
+            <Auth />
         </div>
     )
 }

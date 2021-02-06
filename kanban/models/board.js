@@ -23,6 +23,23 @@ const boardSchema = new Schema({
         type: String,
         required: false
     },
+
+    priority:{
+        type: String,
+        required: true
+    },
+    sprint: {
+        type: String,
+        required: false
+    },
+    timeLine: {
+        type: String,
+        required: false
+    },
+    engineers:{
+        type: String,
+        required: false
+    },
     user:{
         type: Schema.Types.ObjectId,
         ref: "Auth",

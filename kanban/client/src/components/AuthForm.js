@@ -90,7 +90,7 @@ export default function AuthForm(props) {
               type="text"
               className="form-control"
             />
-            <button type="submit" className="mt-4 w-100">{btnText}</button>
+            <MDBBtn type="submit" className="mt-4 w-100">{btnText}</MDBBtn>
           </form>
         </div>
       </Wrapper>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -38,10 +38,20 @@ const Wrapper = styled.div`
   p{
       color: #f1f1f1
   }
+  button{
+
+  }
 `;
 
 
 function Board(props){
+
+  const [show, setShow] = useState(false)
+
+  function handleToggle(){
+    setShow(!show)
+  }
+
   const {boardName,tasks, assignedTo, comment, priority, sprint, timeLine, engineers, dateCreated} = props
     return (
       <Wrapper>
@@ -51,17 +61,23 @@ function Board(props){
 
             <div className="dnd-item">
               <div>
-                <p>ITEM</p>
-              </div>
-            </div>
-            <div className="dnd-item">
-              <div>
-                <p>ITEM</p>
-              </div>
-            </div>
-            <div className="dnd-item">
-              <div>
-                <p>ITEM</p>
+                <small>{boardName}</small>
+                <small>{dateCreated}</small>
+                <small>{tasks}</small>
+                <small>{sprint}</small>
+                <button onClick={handleToggle}>
+                  <i className="fas fa-caret-down"></i>
+                </button>
+                <div
+                  style={show ? { display: "block" } : { display: "none" }}
+                  className="moreOptions"
+                >
+                  <small>{assignedTo}</small>
+                  <small>{priority}</small>
+                  <small>{timeLine}</small>
+                  <small>{engineers}</small>
+                  <small>{comment}comment</small>
+                </div>
               </div>
             </div>
           </div>
@@ -69,17 +85,17 @@ function Board(props){
             <p>In Progress</p>
             <div className="dnd-item">
               <div>
-                <p>ITEM</p>
+                {/* <p>ITEM</p> */}
               </div>
             </div>
             <div className="dnd-item">
               <div>
-                <p>ITEM</p>
+                {/* <p>ITEM</p> */}
               </div>
             </div>
             <div className="dnd-item">
               <div>
-                <p>ITEM</p>
+                {/* <p>ITEM</p> */}
               </div>
             </div>
           </div>

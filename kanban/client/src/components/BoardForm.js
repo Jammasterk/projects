@@ -153,52 +153,100 @@ function BoardForm(props){
     return (
       <Wrapper>
         <button onClick={handleClick}>
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </button>
         <form
           className="zoomIn"
           style={modal ? { display: "block" } : { display: "none" }}
+          onSubmit={handleSubmit}
         >
           <a href="" onClick={handleClick}>
             <i
               style={{ color: "#989898", fontSize: "24px" }}
-              class="fas fa-times"
+              className="fas fa-times"
             ></i>
           </a>
           <div className="inner-modal">
             <div className="left-modal">
-              <i class="icons far fa-clock"></i>
-              <input type="text" placeholder="Name new task" name="boardName" value={boardName} onChange={handleChange}/>
+              <i className="icons far fa-clock"></i>
+              <input
+                type="text"
+                placeholder="Name new task"
+                name="boardName"
+                value={boardName}
+                onChange={handleChange}
+              />
               <br />
-              <i class="icons fas fa-tasks"></i>
-              <input type="text" placeholder="Task" name="tasks" value={tasks} onChange={handleChange}/>
+              <i className="icons fas fa-tasks"></i>
+              <input
+                type="text"
+                placeholder="Task"
+                name="tasks"
+                value={tasks}
+                onChange={handleChange}
+              />
               <br />
-              <i class="icons fas fa-user"></i>
-              <input type="text" placeholder="Assign task to..." name="assignedTo" value={assignedTo} onChange={handleChange}/>
+              <i className="icons fas fa-user"></i>
+              <input
+                type="text"
+                placeholder="Assign task to..."
+                name="assignedTo"
+                value={assignedTo}
+                onChange={handleChange}
+              />
               <br />
-              <i class="icons far fa-comment"></i>
-              <input type="text" placeholder="Add comment" name="comment" value={comment} onChange={handleChange}/>
+              <i className="icons far fa-comment"></i>
+              <input
+                type="text"
+                placeholder="Add comment"
+                name="comment"
+                value={comment}
+                onChange={handleChange}
+              />
               <br />
-              <i class="icons fas fa-signal"></i>
-              <select name="" id="">
-                <option disabled="disabled" active name="priority" value={priority} onChange={handleChange}>
+              <i className="icons fas fa-signal"></i>
+              <select
+                id=""
+                name="priority"
+                value={priority}
+                onChange={handleChange}
+              >
+                <option disabled="disabled">
                   Choose Priority
                 </option>
-                <option value="">Urgent</option>
-                <option value="">High</option>
-                <option value="">Medium</option>
-                <option value="">Low</option>
+                <option value="urgent">Urgent</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
               </select>
             </div>
             <div className="right-modal">
-              <i class="icons fas fa-list"></i>
-              <input type="text" placeholder="Sprint" name="sprint" value={sprint} onChange={handleChange}/>
+              <i className="icons fas fa-list"></i>
+              <input
+                type="text"
+                placeholder="Sprint"
+                name="sprint"
+                value={sprint}
+                onChange={handleChange}
+              />
               <br />
-              <i class="icons fas fa-stream"></i>
-              <input type="text" placeholder="Timeline" name="timeLine" value={timeLine} onChange={handleChange}/>
+              <i className="icons fas fa-stream"></i>
+              <input
+                type="text"
+                placeholder="Timeline"
+                name="timeLine"
+                value={timeLine}
+                onChange={handleChange}
+              />
               <br />
-              <i class="icons fas fa-users-cog"></i>
-              <input type="text" placeholder="Engineers" name="engineers" value={engineers} onChange={handleChange}/>
+              <i className="icons fas fa-users-cog"></i>
+              <input
+                type="text"
+                placeholder="Engineers"
+                name="engineers"
+                value={engineers}
+                onChange={handleChange}
+              />
             </div>
           </div>
           <button className="ripple">Create New Board</button>

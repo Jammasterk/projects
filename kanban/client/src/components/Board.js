@@ -2,15 +2,18 @@ import React, {useState} from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  text-align: center;
+  /* text-align: center; */
 
+  small {
+    text-align: left !important;
+  }
   .drag-n-drop {
     padding: 0.5rem;
     display: grid;
     width: 100vw;
     height: 80%;
     grid-template-columns: repeat(auto-fill, 300px);
-    grid-gap: .5rem
+    grid-gap: 0.5rem;
   }
 
   .dnd-group {
@@ -24,22 +27,22 @@ const Wrapper = styled.div`
     min-height: 150px;
     border-radius: 5px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    font-weight: bold
+    font-weight: bold;
+    padding: 1em;
   }
 
-  .dnd-item:not(:last-of-type){
-      margin-bottom: .5rem
+  .dnd-item:not(:last-of-type) {
+    margin-bottom: 0.5rem;
   }
   .dnd-item * {
     margin: 0;
   }
-  p{
-      color: #f1f1f1
+  p {
+    color: #f1f1f1;
   }
-  button{
-
+  button {
   }
 `;
 
@@ -60,11 +63,15 @@ function Board(props){
             <p>Not Started</p>
 
             <div className="dnd-item">
-              <div>
-                <small>{boardName}</small>
-                <small>{dateCreated}</small>
-                <small>{tasks}</small>
-                <small>{sprint}</small>
+              <div style={{display : "block"}}>
+                <small>Task: {boardName}</small>
+                <br/>
+                <small>Created on: {dateCreated}</small>
+                <br/>
+                <small>Task: {tasks}</small>
+                <br/>
+                <small>Sprint: {sprint}</small>
+                <br/>
                 <button onClick={handleToggle}>
                   <i className="fas fa-caret-down"></i>
                 </button>
@@ -72,11 +79,15 @@ function Board(props){
                   style={show ? { display: "block" } : { display: "none" }}
                   className="moreOptions"
                 >
-                  <small>{assignedTo}</small>
-                  <small>{priority}</small>
-                  <small>{timeLine}</small>
-                  <small>{engineers}</small>
-                  <small>{comment}comment</small>
+                  <small>Assigned to:{assignedTo}</small>
+                  <br/>
+                  <small>Priority: {priority}</small>
+                  <br/>
+                  <small>Timeline: {timeLine}</small>
+                  <br/>
+                  <small>Engineers: {engineers}</small>
+                  <br/>
+                  <small>Comments: {comment}</small>
                 </div>
               </div>
             </div>
@@ -84,19 +95,13 @@ function Board(props){
           <div className="dnd-group">
             <p>In Progress</p>
             <div className="dnd-item">
-              <div>
-                {/* <p>ITEM</p> */}
-              </div>
+              <div>{/* <p>ITEM</p> */}</div>
             </div>
             <div className="dnd-item">
-              <div>
-                {/* <p>ITEM</p> */}
-              </div>
+              <div>{/* <p>ITEM</p> */}</div>
             </div>
             <div className="dnd-item">
-              <div>
-                {/* <p>ITEM</p> */}
-              </div>
+              <div>{/* <p>ITEM</p> */}</div>
             </div>
           </div>
           <div className="dnd-group">

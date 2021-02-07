@@ -112,7 +112,8 @@ const initInputs = {
     comment: "",
     priority: "",
     sprint: "",
-    timeLine: ""
+    timeLine: "",
+    engineers: ""
 }
 
 function BoardForm(props){
@@ -131,6 +132,8 @@ function BoardForm(props){
 
     function handleSubmit(e){
         e.preventDefault()
+        console.log(inputs)
+        addBoard(inputs)
         setInputs(initInputs)
     }
 
@@ -141,7 +144,6 @@ function BoardForm(props){
 
     const {
     boardName,
-    dateCreated,
     tasks,
     assignedTo,
     comment,
@@ -157,8 +159,8 @@ function BoardForm(props){
         </button>
         <form
           className="zoomIn"
-          style={modal ? { display: "block" } : { display: "none" }}
           onSubmit={handleSubmit}
+          style={modal ? { display: "block" } : { display: "none" }}
         >
           <a href="" onClick={handleClick}>
             <i
@@ -249,7 +251,7 @@ function BoardForm(props){
               />
             </div>
           </div>
-          <button className="ripple">Create New Board</button>
+          <button type="submit" className="ripple">Create New Board</button>
         </form>
       </Wrapper>
     );

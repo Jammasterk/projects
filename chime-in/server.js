@@ -25,6 +25,7 @@ app.use(
   "/api",
   expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] })
 );
+app.use("/api/profile", require("./routes/profileRouter"))
 
 
 app.listen(4500, () => {

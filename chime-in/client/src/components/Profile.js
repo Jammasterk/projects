@@ -5,6 +5,8 @@ import ProImage from "../assets/download.png"
 const Wrapper = styled.div`
   .container {
     height: 100vh;
+    position: absolute;
+    padding: 0 !important
   }
   .upper {
     height: 375px;
@@ -44,6 +46,7 @@ const Wrapper = styled.div`
   h2,
   small {
     font-family: "Titillium Web", sans-serif;
+    color: #010101
   }
   .icon {
     margin-left: 1em;
@@ -90,6 +93,9 @@ const Wrapper = styled.div`
   .board-img {
     width: 250px;
   }
+  .text-info{
+    color: #000
+  }
 `;
 
 export default function Profile() {
@@ -112,7 +118,7 @@ export default function Profile() {
 
     return (
       <Wrapper>
-        <div>
+        <div style={{margin: "none"}}>
           <div className="container">
             <div className="upper">
               <div className="img">

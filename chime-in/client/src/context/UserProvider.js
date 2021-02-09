@@ -14,6 +14,7 @@ export default function UserProvider(props){
     const initState = {
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || "",
+        profiles: [],
         errMsg: ""
     }
 
@@ -41,6 +42,7 @@ export default function UserProvider(props){
             const {user, token} = res.data
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
+            getUserProfile()
             setUserState(prevUserState => ({
                 ...prevUserState,
                 user,
@@ -72,6 +74,50 @@ export default function UserProvider(props){
          }));
        }
 
+       function getUserProfile(){
+         userAxios.get("/api/profile/user")
+         .then(res => {
+           setUserState(prevState => ({
+             ...prevState,
+             profiles: res.data
+           }))
+         })
+         .catch(err => console.log(err.response.data.errMsg))
+       }
+
+       function addProfile(newProfile){
+         userAxios.post("/api/profile", newProfile)
+         .then(res => {
+           setUserState(prevState => ({
+             ...prevState,
+             profiles: [...prevState.profiles, res.data]
+           }))
+         })
+         .catch(err => console.log(err.response.data.errMsg))
+       }
+
+       function updateProfile(updates, profileId){
+          userAxios.put(`/api/profile/${profileId}`, updates)
+          .then(res => {
+            setUserState(prevState => ({
+              ...prevState,
+              profiles: prevState.profiles.map(profile => profile._id !== profileId ? profile: res.data)
+            }))
+          })
+          .catch(err => console.log(err))
+       }
+
+       function deleteProfile(profileId){
+         userAxios.delete(`/api/profile/${profileId}`)
+         .then(res => {
+           setUserState(prevState => ({
+             ...prevState,
+             profiles: prevState.profiles.filter(profile => profile._id !== profileId)
+           }))
+         })
+         .catch(console.log("Your profile has been deleted"))
+       }
+
     return(
         <UserContext.Provider
         value={{
@@ -79,7 +125,11 @@ export default function UserProvider(props){
             signup,
             login,
             logout,
-            resetAuthErr
+            resetAuthErr,
+            getUserProfile,
+            updateProfile,
+            deleteProfile,
+            addProfile
         }}>
             {props.children}
         </UserContext.Provider>

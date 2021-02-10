@@ -109,20 +109,20 @@ export default function AuthForm(props) {
         <div className="container">
           <div className="text">
             <h1 className="title">
-              Chime In <i class="fas fa-concierge-bell"></i>
+              Chime In <i className="fas fa-concierge-bell"></i>
             </h1>
 
             <p>Share, view, and review design projects from artists, designers, and developers.</p>
             <form onSubmit={handleSubmit}>
               <div className="inner-form">
                 <h1 className="signup-text">Signup / Login</h1>
-                <div class="mb-4">
-                  <label class="form-label">
+                <div className="mb-4">
+                  <label className="form-label">
                     Email address
                   </label>
                   <input
                     type="email"
-                    class="form-control w-100"
+                    className="form-control w-100"
                     placeholder="name@example.com"
                     name="email"
                     value={email}
@@ -130,12 +130,12 @@ export default function AuthForm(props) {
                   />
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">
+                  <label className="form-label">
                     password
                   </label>
                   <input
                     type={toggle ? "text" : "password"}
-                    class="form-control"
+                    className="form-control"
                     placeholder="password"
                     name="password"
                     value={password}
@@ -145,17 +145,17 @@ export default function AuthForm(props) {
                 </div>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
                     onClick={tog}
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
+                  <label className="form-check-label" for="flexCheckDefault">
                     {toggle ? "Hide" : "Show"} password
                   </label>
                 </div>
-                <button type="submit" class="btn btn-dark w-75 mt-4">
+                <button type="submit" className="btn btn-dark w-75 mt-4">
                     {btnText}
                 </button>
               </div>

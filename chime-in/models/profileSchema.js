@@ -38,6 +38,10 @@ const profileSchema = new Schema({
     type: String,
     required: false
   },
+  occupation: {
+    type: String,
+    required: false
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: "Auth",

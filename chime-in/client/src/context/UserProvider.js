@@ -84,6 +84,16 @@ export default function UserProvider(props){
          })
          .catch(err => console.log(err.response.data.errMsg))
        }
+       function getProfile(){
+        userAxios.get("/api/profile/")
+        .then(res => {
+          setUserState(prevState => ({
+            ...prevState,
+            profiles: res.data
+          }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+      }
 
        function addProfile(newProfile){
          userAxios.post("/api/profile", newProfile)

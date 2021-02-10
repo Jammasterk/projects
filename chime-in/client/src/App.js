@@ -5,6 +5,9 @@ import Auth from "./components/Auth"
 import ProtectedRoute from "./components/ProtectedRoute"
 import {UserContext} from "./context/UserProvider"
 import Navbar from "./components/Navbar"
+import User from "./components/User"
+import UserForm from "./components/UserForm"
+import NewAccount from "./components/NewAccount"
 
 export default function App() {
     const {token, logout} = useContext(UserContext)
@@ -19,12 +22,13 @@ export default function App() {
                 render={() => (token ? <Redirect to="/profile"/> : <Auth />)}
              />
              <ProtectedRoute
-                path="/profile"
-                component={Profile}
+                path="/user"
+                component={NewAccount}
                 redirectTo="/"
                 token={token}
              />    
         </Switch>  
+        
         </>
     )
 }

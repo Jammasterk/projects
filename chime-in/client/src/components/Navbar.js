@@ -5,7 +5,7 @@ export default function Navbar(props){
     const {logout, token} = props
     return(
         <ul>
-            <li>
+            <li style={{color: "black"}}>
                 {token && <Link to="/user">
                 Account
                 </Link>}

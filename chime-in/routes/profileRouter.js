@@ -1,5 +1,7 @@
 const express = require("express")
 const profileRouter = express.Router()
+const cloudinary = require("../utils/cloudinary")
+const upload = require('../utils/multer')
 const Profile = require("../models/profileSchema")
 
 

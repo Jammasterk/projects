@@ -133,7 +133,7 @@ export default function User(props) {
                 <div className="profile-info">
                   <div className="text-info">
                     <h2>{name}</h2>
-                    <small>Location: {location}r</small>
+                    <small>Location: {location}</small>
                     <br />
                     <small>Occupation: {occupation}</small>
                     <br />
@@ -169,7 +169,7 @@ export default function User(props) {
             <div className="middle">
               <h1 className="bio">Bio</h1>
               <p>
-                Bio: {bio}
+               {bio}
               </p>
             </div>
             <div className="end">

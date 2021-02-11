@@ -6,6 +6,7 @@ export default function UserList(props){
     return(
         <div>
             {profiles.map(profile => <User {...profile} key={profile._id}/>)}
+            {/* <User /> */}
         </div>
     )
 }

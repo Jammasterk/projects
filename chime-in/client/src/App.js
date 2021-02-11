@@ -19,7 +19,7 @@ export default function App() {
             <Route
                 exact
                 path="/"
-                render={() => (token ? <Redirect to="/profile"/> : <Auth />)}
+                render={() => (token ? <Redirect to="/user"/> : <Auth />)}
              />
              <ProtectedRoute
                 path="/user"

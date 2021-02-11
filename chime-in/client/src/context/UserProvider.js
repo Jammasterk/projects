@@ -49,7 +49,8 @@ export default function UserProvider(props){
                 token
             }))
         })
-        .catch(err => handleAuthErr(err.response.data.errMsg))
+        // .catch(err => handleAuthErr(err.response.data.errMsg))
+        .catch(err => console.log(err))
     }
     function logout(){
         localStorage.removeItem("token")
@@ -82,7 +83,7 @@ export default function UserProvider(props){
              profiles: res.data
            }))
          })
-         .catch(err => console.log(err.response.data.errMsg))
+         .catch(err => console.log(err))
        }
        function getProfile(){
         userAxios.get("/api/profile/")

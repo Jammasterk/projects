@@ -73,7 +73,7 @@ export default function UserForm(props){
         <Wrapper>
  <div className="jumbotron jumbotron-fluid">
   <form className="container" onSubmit={handleSubmit}>
-   <h1>Account Information</h1>
+   {/* <h1>Account Information</h1> */}
    <div className="form-group">
     <label for="exampleInputEmail1">Name</label>
     <input type="text" class="form-control" placeholder="Your name" name="name" value={name} onChange={handleChange}/>

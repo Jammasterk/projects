@@ -4,43 +4,47 @@ const Schema = mongoose.Schema
 const profileSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    // required: true,
   },
   location: {
     type: String,
-    required: true,
+    // required: true,
+  },
+  img:{
+    type: String,
+    required: false
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
   },
   portfolio: {
     type: String,
-    required: false,
+    // required: false,
   },
   bio: {
     type: String,
-    required: true,
+    // required: true,
   },
   twitter:{
     type: String,
-    required: false
+    // required: false
   },
   dribble:{
     type: String,
-    required: false
+    // required: false
   },
   behance:{
     type: String,
-    required: false
+    // required: false
   },
   linkedIn:{
     type: String,
-    required: false
+    // required: false
   },
   occupation: {
     type: String,
-    required: false
+    // required: false
   },
   user: {
     type: Schema.Types.ObjectId,

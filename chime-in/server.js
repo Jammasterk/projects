@@ -30,6 +30,7 @@ app.use(
 );
 app.use("/api/profile", require("./routes/profileRouter"))
 app.use("/api/story", require("./routes/storyRouter"))
+// app.use("/api/profile/photo", require('./routes/profileRouter'))
 
 
 app.listen(4500, () => {

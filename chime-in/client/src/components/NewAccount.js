@@ -26,7 +26,9 @@ export default function NewAccount(){
             name
         },
         addProfile,
-        profiles
+        profiles,
+        addProfilePhoto,
+        photos
     } = useContext(UserContext)
 
     function handleToggle(){
@@ -40,7 +42,7 @@ export default function NewAccount(){
           <i className="" onClick={handleToggle} class="fas fa-plus margin neu"></i>
           <div
             className="transform"
-            style={toggle ? { display: "block" } : { display: "none" }}
+            style={toggle ? { display: "none" } : { display: "block" }}
           >
             <UserForm addProfile={addProfile} />
           </div>

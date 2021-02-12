@@ -10,10 +10,14 @@ const profileSchema = new Schema({
     type: String,
     // required: true,
   },
-  img:{
+  avatar: {
     type: String,
-    required: false
+    // required: false
   },
+  cloudinary_id: {
+    type: String,
+  },
+
   email: {
     type: String,
     // required: true,
@@ -26,30 +30,30 @@ const profileSchema = new Schema({
     type: String,
     // required: true,
   },
-  twitter:{
+  twitter: {
     type: String,
     // required: false
   },
-  dribble:{
+  dribble: {
     type: String,
-    // required: false
+    required: false,
   },
-  behance:{
+  behance: {
     type: String,
-    // required: false
+    required: false,
   },
-  linkedIn:{
+  linkedIn: {
     type: String,
-    // required: false
+    required: false,
   },
   occupation: {
     type: String,
-    // required: false
+    required: false,
   },
   user: {
     type: Schema.Types.ObjectId,
     ref: "Auth",
-    required: true,
+    required: true
   },
 });
 

@@ -107,6 +107,17 @@ export default function UserProvider(props){
          .catch(err => console.log(err.response.data.errMsg))
        }
 
+       function addProfilePhoto(newProfilePhoto){
+         userAxios.post("/api/profile/photo", newProfilePhoto)
+         .then(res => {
+           setUserState(prevState => ({
+             ...prevState,
+             photos: [...prevState.photos, res.data]
+           }))
+         })
+         .catch(err => console.log(err.response.data.errMsg))
+       }
+
        function updateProfile(updates, profileId){
           userAxios.put(`/api/profile/${profileId}`, updates)
           .then(res => {
@@ -140,7 +151,8 @@ export default function UserProvider(props){
             getUserProfile,
             updateProfile,
             deleteProfile,
-            addProfile
+            addProfile,
+            addProfilePhoto
         }}>
             {props.children}
         </UserContext.Provider>

@@ -18,6 +18,7 @@ mongoose.connect("mongodb://localhost:27017/chime-in", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useUnifiedTopology: true,
+    // useCreateIndex: true,
     useFindAndModify: false,
 },
 () => console.log("Connected to DB")
@@ -30,7 +31,7 @@ app.use(
 );
 app.use("/api/profile", require("./routes/profileRouter"))
 app.use("/api/story", require("./routes/storyRouter"))
-// app.use("/api/profile/photo", require('./routes/profileRouter'))
+app.use("/api/photo", require('./routes/photoRouter'))
 
 
 app.listen(4500, () => {

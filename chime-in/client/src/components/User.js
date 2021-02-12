@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     height: 200px;
     width: 200px;
     position: absolute;
-    background: blue;
+    /* background: blue; */
     margin-top: 275px;
     margin-left: 100px;
     display: flex;

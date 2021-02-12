@@ -12,9 +12,13 @@ const profileSchema = new Schema({
   },
   avatar: {
     type: String,
-    // required: false
+    required: true
   },
   cloudinary_id: {
+    type: String
+   
+  },
+  Name: {
     type: String,
   },
 
@@ -52,8 +56,7 @@ const profileSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: "Auth",
-    required: true
+    ref: "Auth"
   },
 });
 

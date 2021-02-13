@@ -3,19 +3,21 @@ import AuthForm from "./AuthForm";
 import { UserContext } from "../context/UserProvider";
 import styled from "styled-components"
 
-const initInputs = { email: "", password: "" };
 
 const Wrapper = styled.div`
   p {
     position: absolute;
     margin-top: 560px;
-    /* justify-content: center; */
+    text-align: center;
     top: 0;
     color: #fff;
     font-family: "Poppins", sans-serif;
+    font-weight: 300
   }
 
 `;
+
+const initInputs = { email: "", password: "" };
 
 const Auth = () => {
   const [inputs, setInputs] = useState(initInputs);

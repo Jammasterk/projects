@@ -45,6 +45,7 @@ const Wrapper = styled.div`
     border: none;
     background: none !important;
     border-bottom: 1px solid #f5f5f5;
+    color: #f5f5f5
   }
 
   label {

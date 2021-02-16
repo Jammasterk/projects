@@ -75,7 +75,7 @@ function Nav() {
         <div>
           <ul className="openNav">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/homepage">Home</Link>
             </li>
             <li>
               <Link to="/about">About</Link>

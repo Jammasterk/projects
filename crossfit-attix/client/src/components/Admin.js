@@ -1,6 +1,14 @@
 import React, {useState, useContext} from "react"
 import AdminForm from "./AdminForm"
 import {UserContext} from "../context/UserProvider"
+import styled from "styled-components"
+
+const Wrapper = styled.div`
+  p {
+    font-family: "Poppins", sans-serif;
+    cursor: pointer
+  }
+`;
 
 const initInputs = {username: "", password: ""}
 
@@ -29,34 +37,40 @@ const Admin = () => {
         setToggle(prev => !prev)
         resetAuthErr()
     }
-    return(
+    return (
+      <Wrapper>
         <div>
-            {!toggle ? (
-                <>
-                    <AdminForm
-                        handleChange={handleChange}
-                        handleSubmit={handleSignup}
-                        inputs={inputs}
-                        btnText="Request Admin Access"
-                        errMsg={errMsg}
-                    />
-                    <p onClick={toggleForm}>Already have access</p>
-                </>
-            )
-                :
-                (
-                <>
-                    <AdminForm
-                        handleChange={handleChange}
-                        handleSubmit={handleLogin}
-                        inputs={inputs}
-                        btnText="Login to admin portal"
-                    />
-                    <p onClick={toggleForm}>Request Access</p>
-                </>
-            )}
+          {!toggle ? (
+            <>
+              {/* */}
+              <AdminForm
+                handleChange={handleChange}
+                handleSubmit={handleLogin}
+                inputs={inputs}
+                btnText="Login to admin portal"
+                errMsg={errMsg}
+              />
+              <p style={{ textAlign: "center" }} onClick={toggleForm}>
+                Request Access
+              </p>
+            </>
+          ) : (
+            <>
+              <AdminForm
+                handleChange={handleChange}
+                handleSubmit={handleSignup}
+                inputs={inputs}
+                btnText="Request Admin Access"
+                errMsg={errMsg}
+              />
+              <p style={{ textAlign: "center" }} onClick={toggleForm}>
+                Already have access
+              </p>
+            </>
+          )}
         </div>
-    )
+      </Wrapper>
+    );
 }
 
 export default Admin

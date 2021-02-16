@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import axios from "axios"
 
 export const UserContext = React.createContext()
@@ -14,8 +14,10 @@ userAxios.interceptors.request.use(config => {
 export default function UserProvider(props){
 
     const initState = {
-        iser: JSON.parse(localStorage.getItem('user')) || {},
+        user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
+        wods: [],
+        errMsg: ""
 
     }
 
@@ -41,7 +43,8 @@ export default function UserProvider(props){
         .then(res => {
             const {user, token} = res.data;
             localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user))
+            localStorage.setItem("user", JSON.stringify(user));
+            getUserWOD();
             setUserState(prevUserState => ({
                 ...prevUserState,
                 user,
@@ -55,7 +58,9 @@ export default function UserProvider(props){
         localStorage.removeItem('token')
         localStorage.removeItem('user')
         setUserState({
-            user: []
+            wods: [],
+            user: {},
+            token: ""
         })
     }
 
@@ -73,6 +78,54 @@ export default function UserProvider(props){
         }))
     }
 
+    function getUserWOD(){
+        userAxios.get('/api/wod/user')
+            .then(res => {
+                setUserState(prevState => ({
+                    ...prevState,
+                    wods: res.data
+                }))
+            })
+        .catch(err => console.log(err))
+    }
+
+    function addWod(newWod){
+        userAxios.post('/api/wod', newWod)
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                wods: [...prevState.wods, res.data]
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    function updateWod(updates, wodId){
+        userAxios.put(`/api/wod/${wodId}`, updates)
+        .then(res => {
+            console.log(res)
+            setUserState(prevState => ({
+                ...prevState,
+                wods: prevState.wods.map(wod => wod._id !== wodId ? wod : res.data)
+            }))
+        })
+        .catch(err => console.log(err))
+    }
+
+    function deleteWod(wodId){
+        userAxios.delete(`/api/wod/${wodId}`)
+        .then(res => {
+            setUserState(prevState => ({
+                ...prevState,
+                wods: prevState.wods.filter(wod => wod._id !== wodId)
+            }))
+        })
+    }
+
+    useEffect(() => {
+        getUserWOD()
+    }, [])
+
     return(
         <UserContext.Provider
         value={{
@@ -80,7 +133,10 @@ export default function UserProvider(props){
             signup,
             login,
             logout,
-            resetAuthErr
+            resetAuthErr,
+            addWod,
+            updateWod,
+            deleteWod
         }}
         >
             {props.children}

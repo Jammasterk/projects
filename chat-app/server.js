@@ -4,11 +4,14 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const expressJwt = require('express-jwt')
+const fileUpload = require('express-fileupload')
 
 process.env.SECRET
 
 app.use(express.json())
 app.use(morgan('dev'))
+
+app.use(fileUpload())
 
 mongoose.connect("mongodb://localhost:27017/e-commerce", {
     useNewUrlParser: true,
@@ -18,6 +21,22 @@ mongoose.connect("mongodb://localhost:27017/e-commerce", {
 },
 ()=> console.log("Connected to DB")
 )
+
+
+
+app.post('/upload', (req, res, next) => {
+  if(req.files === null){
+    return res.status(400).json({msg: "no file is uploade"})
+  }
+  const file = req.files.file;
+  file.mv(`${__dirname}/client/uploads/ ${file.name}`, err => {
+    if(err){
+      console.error(err)
+      return res.status(500).send(err)
+    }
+    res.json({fileName: file.name, filePath: `/uploads/${file.name}`})
+  })
+})
 
 app.use("/auth", require('./routes/authRouter'))
 app.use(

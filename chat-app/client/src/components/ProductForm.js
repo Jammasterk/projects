@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled from "styled-components"
+import axios from "axios"
 
 const Wrapper = styled.div`
 select{
@@ -34,6 +35,9 @@ function ProductForm(props) {
     }
 
     const [inputs, setInputs] = useState(initInputs)
+    const [file, setFile] = useState()
+    const [fileName, setFileName] = useState("Choose File")
+    const [upload, setUpload] = useState({})
 
     function handleChange(e){
         const {name, value} = e.target
@@ -43,11 +47,33 @@ function ProductForm(props) {
         }))
     }
 
-    function handleSubmit(e){
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(inputs);
         props.submit(inputs, props._id);
         setInputs(initInputs);
+        const formData = new FormData()
+        formData.append("file", file);
+        try{
+          const res = await axios.post('/upload', formData, {
+            headers: {
+              "Content-Type": 'multipart/form-data'
+            }
+          })
+          const {fileName, filePath } = res.data
+          setUpload({fileName, filePath})
+        }catch(err){
+          if(err.response.status === 500){
+            console.log("There was an error")
+          }else{
+            console.log(err.response.data.msg)
+          }
+        }
+    }
+
+    const onChange = e => {
+      setFile(e.target.files[0])
+      setFileName(e.target.files[0].name);
     }
 
     const {title, subTitle, price, shippingDetails, image, query} =inputs
@@ -118,6 +144,17 @@ function ProductForm(props) {
             />
             <label for="image">Upload Image</label>
           </div>
+
+          <div class="file-field input-field">
+            <div className="btn">
+              <span>{fileName}</span>
+              <input type="file" onChange={onChange}/>
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" />
+            </div>
+          </div>
+
           <div className="input-field col s6">
             <input
               id="query"
@@ -130,7 +167,9 @@ function ProductForm(props) {
             <label for="image">Add query</label>
           </div>
           <select name="query" value={query} id="">
-            <option value="" disabled selected>Choose department</option>
+            <option value="" disabled selected>
+              Choose department
+            </option>
             <option value="CLothing And accessories">
               Clothing and accessories
             </option>
@@ -148,7 +187,12 @@ function ProductForm(props) {
             <option value="Outdoors">Outdoors</option>
             <option value="Automotive">Automotive</option>
           </select>
-          <button style={{marginTop: "1em"}} className="waves-effect waves-light btn">Add Product</button>
+          <button
+            style={{ marginTop: "1em" }}
+            className="waves-effect waves-light btn"
+          >
+            Add Product
+          </button>
         </form>
       </Wrapper>
     );

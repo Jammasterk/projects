@@ -3,6 +3,9 @@ import styled from "styled-components"
 import HomeImage from "../assets/woman-holding-bar.jpeg"
 import BoxJump from "../assets/box-jump.jpeg"
 import Nav from "./Nav"
+import WOD from "./WOD"
+import {Switch, Route, Link} from "react-router-dom"
+import Admin from "./Admin"
 
 
 const Wrapper = styled.div`
@@ -11,8 +14,8 @@ const Wrapper = styled.div`
     height: 100vh;
   }
 
-  .boxjump{
-    display: none
+  .boxjump {
+    display: none;
   }
   .filter {
     height: 100vh;
@@ -62,6 +65,12 @@ const Wrapper = styled.div`
   video {
     display: none;
   }
+  .admin {
+    font-family: "Poppins", sans-serif;
+    color: #403f3f;
+    text-decoration: none;
+    text-align: center
+  }
 
   @media only screen and (max-width: 600px) {
     .holdbar {
@@ -70,22 +79,27 @@ const Wrapper = styled.div`
     .boxjump {
       width: 100%;
       height: 100vh;
-      display: block
+      display: block;
     }
-    .content{
-      margin-top:25%
+    .content {
+      margin-top: 25%;
     }
-    h1{
-      font-size: 60px
+    h1 {
+      font-size: 60px;
     }
 
-    h4{
-      font-size: 14px
+    h4 {
+      font-size: 14px;
     }
   }
 `;
 
 function Homepage() {
+  <Switch>
+    <Route path="/admin">
+    component={Admin}
+    </Route>
+  </Switch>
     return (
       <Wrapper>
         <Nav style={{position: "absolute", zIndex: 2}} />
@@ -98,6 +112,9 @@ function Homepage() {
                 <h4>Denver | Centennial | Boulder</h4>
                 <button>Try a class for free</button>
             </div>
+        <Link className="admin" to="/admin"> 
+        Admin Access
+         </Link>
         </div>
       </Wrapper>
     );

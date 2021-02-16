@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const wodSchema = new Schema({
+    title:{
+        type: String,
+        required: true
+    },
     warmUp:{
         type: String,
         required: false
